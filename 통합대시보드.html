@@ -7,24 +7,32 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;background:#f5f5f3}
-.tabbar{display:flex;background:#fff;border-bottom:1px solid #e0e0dc;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.tabbtn{flex:1;padding:14px 20px;font-size:14px;font-weight:500;font-family:inherit;
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;
+  background:#f5f5f3;display:flex;flex-direction:column}
+.tabbar{display:flex;flex:0 0 auto;background:#fff;border-bottom:1px solid #e0e0dc;
+  box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.tabbtn{flex:1;padding:14px 12px;font-size:14px;font-weight:500;font-family:inherit;
   border:none;background:none;cursor:pointer;color:#999;border-bottom:3px solid transparent;
-  transition:color .15s,background .15s}
+  transition:color .15s,background .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tabbtn:hover{color:#333;background:#fafaf8}
 .tabbtn.active{color:#185FA5;border-bottom-color:#185FA5}
-.panes{position:relative;height:calc(100% - 50px)}
+.lbl-s{display:none}
+.panes{position:relative;flex:1 1 auto;min-height:0}
 .panes iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:none;background:#f5f5f3}
 .panes iframe.active{display:block}
+@media (max-width:640px){
+  .tabbtn{padding:12px 4px;font-size:12px}
+  .lbl-f{display:none}
+  .lbl-s{display:inline}
+}
 </style>
 </head>
 <body>
 
 <div class="tabbar">
-  <button class="tabbtn active" onclick="showTab(0,this)">📋 진행현황 대시보드</button>
-  <button class="tabbtn" onclick="showTab(1,this)">📦 재고현황 대시보드</button>
-  <button class="tabbtn" onclick="showTab(2,this)">✅ 완료 프로젝트</button>
+  <button class="tabbtn active" onclick="showTab(0,this)">📋 <span class="lbl-f">진행현황 대시보드</span><span class="lbl-s">진행</span></button>
+  <button class="tabbtn" onclick="showTab(1,this)">📦 <span class="lbl-f">재고현황 대시보드</span><span class="lbl-s">재고</span></button>
+  <button class="tabbtn" onclick="showTab(2,this)">✅ <span class="lbl-f">완료 프로젝트</span><span class="lbl-s">완료</span></button>
 </div>
 
 <div class="panes">
@@ -84,10 +92,31 @@ h1{font-size:20px;font-weight:500;margin-bottom:4px}
 .filters input{width:180px}
 .count-info{font-size:12px;color:#888;margin-bottom:8px}
 .tbl-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:12px;min-width:900px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:1020px;table-layout:fixed}
 th{font-size:11px;font-weight:500;color:#888;text-align:left;padding:7px 8px;border-bottom:1px solid #e8e8e4;white-space:nowrap;background:#faf9f7;cursor:pointer}
 th:hover{background:#f0efeb}
-td{padding:6px 8px;border-bottom:1px solid #f0efeb;vertical-align:middle}
+th:nth-child(1){width:11%} th:nth-child(2){width:6%} th:nth-child(3){width:12%}
+th:nth-child(4){width:13%} th:nth-child(5){width:8%} th:nth-child(6){width:8%}
+th:nth-child(7){width:5%} th:nth-child(8){width:8%} th:nth-child(9){width:11%}
+th:nth-child(10){width:8%} th:nth-child(11){width:16%}
+td{padding:7px 8px;border-bottom:1px solid #f0efeb;vertical-align:top;
+  white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.5}
+td.c-num{white-space:nowrap}
+.ll-badge{display:inline-block;padding:3px 8px;border-radius:6px;background:#FDECEA;color:#C0392B;
+  font-size:11px;font-weight:600;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
+@media (max-width:700px){
+  body{padding:14px 10px}
+  .tbl-wrap{overflow-x:visible}
+  table{min-width:0;table-layout:auto;display:block}
+  thead{display:none}
+  tbody,tr,td{display:block;width:auto}
+  tbody tr{background:#fff;border:1px solid #e8e8e4;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+  tr:hover td{background:transparent !important}
+  td{border:none;padding:3px 0;display:flex;gap:10px;align-items:flex-start;text-align:left !important}
+  td::before{content:attr(data-l);flex:0 0 58px;color:#999;font-size:11px;font-weight:600;padding-top:1px}
+  .filters input{width:100%}
+  .filters select,.filters label{flex:1 1 45%}
+}
 tr:hover td{background:#faf9f7}
 .badge{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;white-space:nowrap}
 .b-done{background:#EAF3DE;color:#27500A}
@@ -104,7 +133,7 @@ tr:hover td{background:#faf9f7}
 &lt;/head&gt;
 &lt;body&gt;
 &lt;h1&gt;구매품 발주 현황 대시보드&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-09-03 16:59 &amp;nbsp;·&amp;nbsp; 총 202건&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-09-03 17:05 &amp;nbsp;·&amp;nbsp; 총 202건&lt;/div&gt;
 
 
 &lt;div class=&quot;summary-grid&quot;&gt;
@@ -345,6 +374,13 @@ function ddColor(dd, status){
   return`${dd} &lt;span style=&quot;color:#aaa;font-size:11px&quot;&gt;(D-${diff})&lt;/span&gt;`;
 }
 
+function rmCell(rm){
+  const t=String(rm||&quot;&quot;).replace(/\s*\n\s*/g,&quot; / &quot;).trim();
+  if(!t) return &quot;&quot;;
+  return (t.indexOf(&quot;장납기&quot;)&gt;-1||t.indexOf(&quot;선발주&quot;)&gt;-1)
+    ? `&lt;span class=&quot;ll-badge&quot;&gt;🚨 ${t}&lt;/span&gt;` : t;
+}
+
 let cur=[],pgn=1,sortKey=&quot;tp&quot;,sortAsc=true;
 const PS=200;
 
@@ -410,17 +446,17 @@ function render(){
   const st=(pgn-1)*PS;
   document.getElementById(&quot;tbody&quot;).innerHTML=cur.slice(st,st+PS).map(d=&gt;`
     &lt;tr&gt;
-      &lt;td style=&quot;max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis&quot; title=&quot;${d.pj}&quot;&gt;${d.pj}&lt;/td&gt;
-      &lt;td&gt;${d.tp}&lt;/td&gt;
-      &lt;td style=&quot;font-weight:500;white-space:nowrap&quot;&gt;${d.pn}&lt;/td&gt;
-      &lt;td style=&quot;color:#888;max-width:140px;overflow:hidden;text-overflow:ellipsis&quot; title=&quot;${d.sp}&quot;&gt;${d.sp||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;white-space:nowrap&quot;&gt;${d.mk||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;white-space:nowrap&quot;&gt;${d.vd||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;text-align:right;font-weight:500&quot;&gt;${d.dqty||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;white-space:nowrap&quot;&gt;${d.od||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;white-space:nowrap&quot;&gt;${ddColor(d.dd, d.st)}&lt;/td&gt;
-      &lt;td&gt;${badge(d.st)}&lt;/td&gt;
-      &lt;td style=&quot;color:#888&quot;&gt;${d.rm||&quot;&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;프로젝트&quot;&gt;${d.pj}&lt;/td&gt;
+      &lt;td data-l=&quot;구분&quot;&gt;${d.tp}&lt;/td&gt;
+      &lt;td data-l=&quot;부품명&quot; style=&quot;font-weight:500&quot;&gt;${d.pn}&lt;/td&gt;
+      &lt;td data-l=&quot;규격&quot; style=&quot;color:#888&quot;&gt;${d.sp||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;제작사&quot;&gt;${d.mk||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;업체명&quot;&gt;${d.vd||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;수량&quot; class=&quot;c-num&quot; style=&quot;text-align:right;font-weight:500&quot;&gt;${d.dqty||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;발주일&quot; class=&quot;c-num&quot;&gt;${d.od||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;입고일&quot; class=&quot;c-num&quot;&gt;${ddColor(d.dd, d.st)}&lt;/td&gt;
+      &lt;td data-l=&quot;상태&quot;&gt;${badge(d.st)}&lt;/td&gt;
+      &lt;td data-l=&quot;비고&quot; style=&quot;color:#888&quot;&gt;${rmCell(d.rm)}&lt;/td&gt;
     &lt;/tr&gt;`).join(&quot;&quot;);
   const tp=Math.ceil(cur.length/PS)||1;
   document.getElementById(&quot;pinfo&quot;).textContent=`${pgn} / ${tp} 페이지`;
@@ -491,13 +527,28 @@ tr:hover td{background:#f0f4fa !important}
 .vendor-stat b{color:#185FA5}
 .qty-zero{color:#C0392B;font-weight:600}
 @media (max-width:1100px){.vendor-grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:700px){.vendor-grid{grid-template-columns:repeat(2,1fr)}.summary-grid{grid-template-columns:1fr}}
+@media (max-width:700px){
+  .vendor-grid{grid-template-columns:repeat(2,1fr)}
+  .summary-grid{grid-template-columns:1fr}
+  body{padding:14px 10px}
+  .tbl-wrap{overflow-x:visible}
+  table{min-width:0;table-layout:auto;display:block}
+  thead{display:none}
+  tbody,tr,td{display:block;width:auto}
+  tbody tr{background:#fff;border:1px solid #e8e8e4;border-radius:10px;padding:10px 12px;margin-bottom:10px}
+  tbody tr:nth-child(even) td{background:transparent}
+  tr:hover td{background:transparent !important}
+  td{border:none;padding:3px 0;display:flex;gap:10px;align-items:flex-start;text-align:left !important}
+  td::before{content:attr(data-l);flex:0 0 54px;color:#999;font-size:11px;font-weight:600;padding-top:1px}
+  .filters input{width:100%}
+  .filters select{flex:1 1 45%}
+}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div class=&quot;container&quot;&gt;
 &lt;h1&gt;📦 재고 관리 대시보드&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-09-03 16:59 · 127건 / 4,671개&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-09-03 17:05 · 127건 / 4,671개&lt;/div&gt;
 
 &lt;div class=&quot;summary-grid&quot;&gt;
   &lt;div class=&quot;stat-card active&quot; id=&quot;stat-all&quot; onclick=&quot;filterByAll()&quot;&gt;
@@ -699,13 +750,13 @@ function render() {
   const st=(pgn-1)*PS;
   document.getElementById(&quot;tbody&quot;).innerHTML=cur.slice(st,st+PS).map(d=&gt;`
     &lt;tr&gt;
-      &lt;td style=&quot;white-space:nowrap;font-weight:500&quot;&gt;${d.supplier||&quot;-&quot;}&lt;/td&gt;
-      &lt;td&gt;${d.maker||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;font-weight:500&quot;&gt;${d.product||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis&quot; title=&quot;${esc(d.spec)}&quot;&gt;${d.spec||&quot;-&quot;}&lt;/td&gt;
-      &lt;td style=&quot;text-align:right;font-weight:500&quot; class=&quot;${d.qty&lt;=0?'qty-zero':''}&quot; &gt;${d.qty.toLocaleString()}&lt;/td&gt;
-      &lt;td style=&quot;text-align:right&quot;&gt;${usageCell(d.use_cur, d.memo_cur)}&lt;/td&gt;
-      &lt;td style=&quot;text-align:right&quot;&gt;${usageCell(d.use_nxt, d.memo_nxt)}&lt;/td&gt;
+      &lt;td data-l=&quot;구매처&quot; style=&quot;font-weight:500&quot;&gt;${d.supplier||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;제작사&quot;&gt;${d.maker||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;품명&quot; style=&quot;font-weight:500&quot;&gt;${d.product||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;규격&quot; style=&quot;color:#888&quot;&gt;${d.spec||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;재고&quot; style=&quot;text-align:right;font-weight:500&quot; class=&quot;c-num ${d.qty&lt;=0?'qty-zero':''}&quot;&gt;${d.qty.toLocaleString()}&lt;/td&gt;
+      &lt;td data-l=&quot;당월&quot; class=&quot;c-num&quot; style=&quot;text-align:right&quot;&gt;${usageCell(d.use_cur, d.memo_cur)}&lt;/td&gt;
+      &lt;td data-l=&quot;익월&quot; class=&quot;c-num&quot; style=&quot;text-align:right&quot;&gt;${usageCell(d.use_nxt, d.memo_nxt)}&lt;/td&gt;
     &lt;/tr&gt;`).join(&quot;&quot;);
   const tp=Math.ceil(cur.length/PS)||1;
   document.getElementById(&quot;pinfo&quot;).textContent=`${pgn} / ${tp} 페이지`;
@@ -748,36 +799,59 @@ h1{font-size:20px;font-weight:500;margin-bottom:4px}
 .filters input{width:200px}
 .count-info{font-size:12px;color:#888;margin-bottom:8px;font-weight:500}
 .tbl-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed;min-width:1000px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed;min-width:1040px}
 th{font-size:11px;font-weight:600;color:#888;text-align:left;padding:9px 10px;border-bottom:2px solid #e8e8e4;white-space:nowrap;background:#faf9f7;cursor:pointer}
 th:hover{background:#f0efeb}
-th:nth-child(1){width:15%}
-th:nth-child(2){width:15%}
-th:nth-child(3){width:15%}
-th:nth-child(4){width:10%}
-th:nth-child(5){width:10%}
-th:nth-child(6){width:6%;text-align:right}
-th:nth-child(7){width:9%}
-th:nth-child(8){width:9%}
-th:nth-child(9){width:17%}
-td{padding:8px 10px;border-bottom:1px solid #f0efeb;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-td:nth-child(6){text-align:right}
+th:nth-child(1){width:13%}
+th:nth-child(2){width:13%}
+th:nth-child(3){width:14%}
+th:nth-child(4){width:9%}
+th:nth-child(5){width:9%}
+th:nth-child(6){width:5%;text-align:right}
+th:nth-child(7){width:8%}
+th:nth-child(8){width:8%}
+th:nth-child(9){width:21%}
+td{padding:9px 10px;border-bottom:1px solid #f0efeb;vertical-align:top;
+   white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.5}
+td:nth-child(6){text-align:right;white-space:nowrap}
+td:nth-child(7),td:nth-child(8){white-space:nowrap}
 tbody tr:nth-child(even) td{background:#fafaf8}
 tr:hover td{background:#f0f7f2 !important}
-.tag{display:inline-block;padding:2px 8px;border-radius:999px;background:#E9F4ED;color:#2E7D4F;font-size:11px;font-weight:500}
-.ll-badge{display:inline-block;padding:2px 8px;border-radius:6px;background:#FDECEA;color:#C0392B;font-size:11px;font-weight:600}
+.tag{display:inline-block;padding:2px 8px;border-radius:999px;background:#E9F4ED;color:#2E7D4F;font-size:11px;font-weight:500;line-height:1.5;white-space:normal}
+.ll-badge{display:inline-block;padding:3px 8px;border-radius:6px;background:#FDECEA;color:#C0392B;font-size:11px;font-weight:600;line-height:1.5;white-space:normal;overflow-wrap:anywhere}
 .done-badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#E9F4ED;color:#2E7D4F;font-size:11px;font-weight:600}
 .pager{display:flex;gap:6px;align-items:center;margin-top:12px;font-size:12px;color:#888}
 .pager button{padding:4px 12px;font-size:12px;border-radius:8px;border:1px solid #ddd;background:#fff;color:#333;cursor:pointer}
 .pager button:hover{background:#f5f5f3}
 .empty{padding:60px 20px;text-align:center;color:#888;font-size:13px;line-height:1.8}
 @media (max-width:900px){.proj-grid{grid-template-columns:repeat(2,1fr)}.summary-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){
+  body{padding:14px 10px}
+  h1{font-size:17px}
+  .card{padding:14px 12px}
+  .stat-num{font-size:24px}
+  .proj-grid{grid-template-columns:1fr}
+  .filters input{width:100%}
+  .filters select,.filters label{flex:1 1 45%}
+  .tbl-wrap{overflow-x:visible}
+  table{min-width:0;table-layout:auto;display:block}
+  thead{display:none}
+  tbody,tr,td{display:block;width:auto}
+  tbody tr{background:#fff;border:1px solid #e8e8e4;border-radius:10px;
+    padding:10px 12px;margin-bottom:10px}
+  tbody tr:nth-child(even) td{background:transparent}
+  tr:hover td{background:transparent !important}
+  td{border:none;padding:3px 0;display:flex;gap:10px;align-items:flex-start;text-align:left !important}
+  td::before{content:attr(data-l);flex:0 0 62px;color:#999;font-size:11px;
+    font-weight:600;padding-top:1px}
+  td:empty{display:none}
+}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div class=&quot;container&quot;&gt;
 &lt;h1&gt;✅ 완료 프로젝트&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-09-03 16:59 · 발주 완료된 종료 프로젝트 아카이브&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-09-03 17:05 · 발주 완료된 종료 프로젝트 아카이브&lt;/div&gt;
 
 &lt;div class=&quot;summary-grid&quot;&gt;
   &lt;div class=&quot;stat-card&quot;&gt;&lt;div class=&quot;stat-label&quot;&gt;완료 프로젝트&lt;/div&gt;&lt;div class=&quot;stat-num&quot;&gt;5&lt;/div&gt;&lt;/div&gt;
@@ -926,15 +1000,15 @@ function render(){
   var st=(pgn-1)*PER, rows=cur.slice(st, st+PER);
   tb.innerHTML = rows.map(function(i){
     return &quot;&lt;tr&gt;&quot;
-      + '&lt;td title=&quot;'+esc(i.pj)+'&quot;&gt;&lt;span class=&quot;tag&quot;&gt;'+esc(i.pj)+&quot;&lt;/span&gt;&lt;/td&gt;&quot;
-      + '&lt;td title=&quot;'+esc(i.pn)+'&quot;&gt;'+esc(i.pn)+&quot;&lt;/td&gt;&quot;
-      + '&lt;td title=&quot;'+esc(i.sp)+'&quot;&gt;'+esc(i.sp)+&quot;&lt;/td&gt;&quot;
-      + &quot;&lt;td&gt;&quot;+esc(i.mk)+&quot;&lt;/td&gt;&quot;
-      + &quot;&lt;td&gt;&quot;+esc(i.vd)+&quot;&lt;/td&gt;&quot;
-      + &quot;&lt;td&gt;&quot;+esc(i.qty)+&quot;&lt;/td&gt;&quot;
-      + &quot;&lt;td&gt;&quot;+esc(i.od)+&quot;&lt;/td&gt;&quot;
-      + '&lt;td title=&quot;'+esc(i.dd)+'&quot;&gt;'+esc(i.dd)+&quot;&lt;/td&gt;&quot;
-      + '&lt;td title=&quot;'+esc(i.rm)+'&quot;&gt;'+rmCell(i.rm)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;프로젝트&quot;&gt;&lt;span class=&quot;tag&quot;&gt;'+esc(i.pj)+&quot;&lt;/span&gt;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;부품명&quot; style=&quot;font-weight:500&quot;&gt;'+esc(i.pn)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;규격&quot;&gt;'+esc(i.sp)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;제작사&quot;&gt;'+esc(i.mk)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;구매업체&quot;&gt;'+esc(i.vd)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;수량&quot;&gt;'+esc(i.qty)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;발주일&quot;&gt;'+esc(i.od)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;입고일&quot;&gt;'+esc(i.dd)+&quot;&lt;/td&gt;&quot;
+      + '&lt;td data-l=&quot;비고&quot;&gt;'+rmCell(i.rm)+&quot;&lt;/td&gt;&quot;
       + &quot;&lt;/tr&gt;&quot;;
   }).join(&quot;&quot;);
   document.getElementById(&quot;pinfo&quot;).textContent = pgn + &quot; / &quot; + Math.ceil(cur.length/PER);
