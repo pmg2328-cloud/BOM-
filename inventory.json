@@ -1,6 +1,16 @@
 {
- "updated": "2026-11-23 18:06",
+ "updated": "2026-11-23 18:07",
  "items": [
+  {
+   "id": "imwt1lj2v4iof4",
+   "supplier": "현전사",
+   "product": "SENSOR",
+   "spec": "EE-SX673",
+   "maker": "OMRON",
+   "qty": 4,
+   "use": {},
+   "memo": {}
+  },
   {
    "id": "imwt1h5cl9amer",
    "supplier": "인아오리엔탈",
@@ -411,7 +421,7 @@
    "product": "SENSOR",
    "spec": "E2EH-X3C1",
    "maker": "OMRON",
-   "qty": 219,
+   "qty": 109,
    "use": {},
    "memo": {}
   },
@@ -431,7 +441,7 @@
    "product": "PHOTO SENSOR",
    "spec": "E3Z-T61",
    "maker": "OMRON",
-   "qty": 160,
+   "qty": 86,
    "use": {},
    "memo": {}
   },
@@ -441,7 +451,7 @@
    "product": "SENSOR",
    "spec": "EE-SX676WR",
    "maker": "OMRON",
-   "qty": 253,
+   "qty": 252,
    "use": {
     "26.09": 1
    },
@@ -455,7 +465,7 @@
    "product": "SENSOR",
    "spec": "EE-SX772A",
    "maker": "OMRON",
-   "qty": 101,
+   "qty": 103,
    "use": {
     "26.09": 10
    },
@@ -469,7 +479,7 @@
    "product": "SENSOR",
    "spec": "EE-SX872",
    "maker": "OMRON",
-   "qty": 20,
+   "qty": 198,
    "use": {
     "26.09": 13
    },
