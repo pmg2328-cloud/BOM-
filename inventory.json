@@ -1,0 +1,1311 @@
+{
+ "updated": "2026-09-22 08:29",
+ "items": [
+  {
+   "id": "i0001",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "리스트 참조",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0002",
+   "supplier": "대아상사",
+   "product": "REGULRATOR",
+   "spec": "25A-AR20K-02B-D",
+   "maker": "SMC",
+   "qty": 90,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0003",
+   "supplier": "대아상사",
+   "product": "GAUGE",
+   "spec": "25A-G46-10-BCI04730",
+   "maker": "SMC",
+   "qty": 86,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0004",
+   "supplier": "대아상사",
+   "product": "AIR CYLINDER",
+   "spec": "25A-MGPM20-50Z-M9NL",
+   "maker": "SMC",
+   "qty": 105,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0005",
+   "supplier": "대아상사",
+   "product": "AIR CYLINDER",
+   "spec": "25A-MGPM32-50Z-M9NL",
+   "maker": "SMC",
+   "qty": 103,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0006",
+   "supplier": "대아상사",
+   "product": "CYLINDER",
+   "spec": "25A-MGPM63-25Z-M9NL",
+   "maker": "SMC",
+   "qty": 120,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0007",
+   "supplier": "대아상사",
+   "product": "CYLINDER CABLE",
+   "spec": "M9NL",
+   "maker": "SMC",
+   "qty": 592,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0008",
+   "supplier": "대아상사",
+   "product": "SILENCER",
+   "spec": "ESKA-Z2802-070",
+   "maker": "SMC",
+   "qty": 45,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0009",
+   "supplier": "대아상사",
+   "product": "SILENCER",
+   "spec": "ESKA-Z2804-070",
+   "maker": "SMC",
+   "qty": 32,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0010",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "T0425W-100",
+   "maker": "SMC",
+   "qty": 30,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0011",
+   "supplier": "대아상사",
+   "product": "PRESSURE SWITCH",
+   "spec": "25A-ISE20-N-M5",
+   "maker": "SMC",
+   "qty": 37,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0012",
+   "supplier": "대아상사",
+   "product": "VACUUM SENSOR CONTROLER",
+   "spec": "25A-ZSE20-N-M5-LB",
+   "maker": "SMC",
+   "qty": 45,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0013",
+   "supplier": "대아상사",
+   "product": "FITTING",
+   "spec": "ZS-46-N1",
+   "maker": "SMC",
+   "qty": 18,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0014",
+   "supplier": "대아상사",
+   "product": "CABLE",
+   "spec": "ZS-46-3L",
+   "maker": "SMC",
+   "qty": 114,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0015",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "VX214NA",
+   "maker": "SMC",
+   "qty": -5,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0016",
+   "supplier": "대아상사",
+   "product": "FILTER",
+   "spec": "25A-AF30-03-D",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0017",
+   "supplier": "대아상사",
+   "product": "REGULATOR",
+   "spec": "25A-AR30-03-D",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0018",
+   "supplier": "대아상사",
+   "product": "CYLINDER",
+   "spec": "25A-MGPM80-25Z-M9NL",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0019",
+   "supplier": "대아상사",
+   "product": "VALVE",
+   "spec": "25A-VHS30-03-D",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0020",
+   "supplier": "대아상사",
+   "product": "FLOW SWITCH",
+   "spec": "PFMB7102-04-D-R",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0021",
+   "supplier": "대아상사",
+   "product": "DIGITAL FLOW S/W GENDER",
+   "spec": "TGW10-01Z-CJUU1616",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0022",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TH0604R-20",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0023",
+   "supplier": "동화자동화",
+   "product": "SERVO MOTOR",
+   "spec": "HG-SR352B",
+   "maker": "MITSUBISHI",
+   "qty": 32,
+   "use": {
+    "26.09": 2
+   },
+   "memo": {
+    "26.09": "PMC 320 미세충방 2EA"
+   }
+  },
+  {
+   "id": "i0024",
+   "supplier": "삼원FA",
+   "product": "SERVO MOTOR",
+   "spec": "HG-KR43",
+   "maker": "MITSUBISHI",
+   "qty": 41,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0025",
+   "supplier": "디에스시스템",
+   "product": "LM GUIDE",
+   "spec": "HSR15A8UU+1420L",
+   "maker": "THK",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0026",
+   "supplier": "디에스시스템",
+   "product": "구리스",
+   "spec": "KMF-400",
+   "maker": "THK",
+   "qty": 90,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0027",
+   "supplier": "미스미",
+   "product": "HANDLE",
+   "spec": "HHMU100",
+   "maker": "MISUMI",
+   "qty": 133,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0028",
+   "supplier": "미스미",
+   "product": "GREASE NIPPLE",
+   "spec": "GPAS1",
+   "maker": "MISUMI",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0029",
+   "supplier": "보아테크",
+   "product": "Silencer for GXS160F",
+   "spec": "NR5211001",
+   "maker": "edwards",
+   "qty": 2,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0030",
+   "supplier": "에드워드",
+   "product": "GXS DRY PUMP SYSTEMS",
+   "spec": "GXS160F LV MD RE CA",
+   "maker": "edwards",
+   "qty": -2,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0031",
+   "supplier": "삼원자동화",
+   "product": "LM GUIDE",
+   "spec": "HSR15A8UU-1380L(G30)",
+   "maker": "THK",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0032",
+   "supplier": "삼원자동화",
+   "product": "LM GUIDE",
+   "spec": "HSR25A4UU+1240L",
+   "maker": "THK",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0033",
+   "supplier": "삼원자동화",
+   "product": "LM BUSH",
+   "spec": "LMK50LUU",
+   "maker": "THK",
+   "qty": 12,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0034",
+   "supplier": "삼원자동화",
+   "product": "LM BUSH",
+   "spec": "LMK50UU",
+   "maker": "THK",
+   "qty": 204,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0035",
+   "supplier": "에스엠이앤씨",
+   "product": "노즐패드",
+   "spec": "V10.0 N04 70도 DCP",
+   "maker": "SMENC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0036",
+   "supplier": "인아오리엔탈",
+   "product": "STEPPING MOTOR",
+   "spec": "CRK564AKD-T10",
+   "maker": "ORIENTAL",
+   "qty": 157,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0037",
+   "supplier": "키엔스",
+   "product": "바코드리더기",
+   "spec": "SR-X100W",
+   "maker": "KEYENCE",
+   "qty": 45,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0038",
+   "supplier": "한일전자",
+   "product": "DAMPER ACTUATOR",
+   "spec": "HM-DAL30-OC-24V",
+   "maker": "HANIL",
+   "qty": 150,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0039",
+   "supplier": "현전사",
+   "product": "SENSOR",
+   "spec": "E2EH-X3C1",
+   "maker": "OMRON",
+   "qty": 219,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0040",
+   "supplier": "현전사",
+   "product": "PHOTO SENSOR",
+   "spec": "E3Z-LT61",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0041",
+   "supplier": "현전사",
+   "product": "PHOTO SENSOR",
+   "spec": "E3Z-T61",
+   "maker": "OMRON",
+   "qty": 160,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0042",
+   "supplier": "현전사",
+   "product": "SENSOR",
+   "spec": "EE-SX676WR",
+   "maker": "OMRON",
+   "qty": 253,
+   "use": {
+    "26.09": 1
+   },
+   "memo": {
+    "26.09": "SPE#320 48CH HVC  10대\n원익 파손- 무상제공"
+   }
+  },
+  {
+   "id": "i0043",
+   "supplier": "현전사",
+   "product": "SENSOR",
+   "spec": "EE-SX772A",
+   "maker": "OMRON",
+   "qty": 101,
+   "use": {
+    "26.09": 10
+   },
+   "memo": {
+    "26.09": "SPE#320 48CH HVC  10대\n원익 파손- 2개 무상제공\n\nPMC#365 /4개\nPMC#320 /4개"
+   }
+  },
+  {
+   "id": "i0044",
+   "supplier": "현전사",
+   "product": "SENSOR",
+   "spec": "EE-SX872",
+   "maker": "OMRON",
+   "qty": 20,
+   "use": {
+    "26.09": 13
+   },
+   "memo": {
+    "26.09": "SPE#320 48CH HVC  10대\n원익 파손- 1개 무상제공\n\nPMC#365 /6개\nPMC#320 /6개"
+   }
+  },
+  {
+   "id": "i0045",
+   "supplier": "현전사",
+   "product": "SAFETY LIGHT CURTAIN",
+   "spec": "F3SG-4RB0520-25-H",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0046",
+   "supplier": "현전사",
+   "product": "SAFETY LIGHT CURTAIN",
+   "spec": "F39-JG10A-D",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0047",
+   "supplier": "현전사",
+   "product": "SAFETY LIGHT CURTAIN",
+   "spec": "F39-JG10A-L",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0048",
+   "supplier": "현전사",
+   "product": "SAFETY LIGHT CURTAIN",
+   "spec": "F39-JGR3K-D",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0049",
+   "supplier": "현전사",
+   "product": "SAFETY LIGHT CURTAIN",
+   "spec": "F39-JGR3K-L",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0050",
+   "supplier": "현전사",
+   "product": "SAFETY LIGHT CURTAIN",
+   "spec": "F39-LSGTB-SJ",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0051",
+   "supplier": "현전사",
+   "product": "LIGHT CURTAIN BKT",
+   "spec": "F39-LSGA",
+   "maker": "OMRON",
+   "qty": 68,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0052",
+   "supplier": "현전사",
+   "product": "LIGHT CURTAIN",
+   "spec": "F3SG-4SRB0280-25-F",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0053",
+   "supplier": "훼스토",
+   "product": "AIR CYLINDER",
+   "spec": "DFM-80-25-P-A-KF",
+   "maker": "FESTO",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0054",
+   "supplier": "훼스토",
+   "product": "AIR CYLINDER",
+   "spec": "DFM-20-50-P-A-KF",
+   "maker": "FESTO",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0055",
+   "supplier": "훼스토",
+   "product": "FITTING",
+   "spec": "QSMP-M6X0.75-4",
+   "maker": "FESTO",
+   "qty": 376,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0056",
+   "supplier": "훼스토",
+   "product": "FILTER RAGULATOR",
+   "spec": "LFR-1/4-D-MINI",
+   "maker": "FESTO",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0057",
+   "supplier": "훼스토",
+   "product": "PRESSURE SENSOR",
+   "spec": "SPAN-B-B11R-R18M-PN-L1",
+   "maker": "FESTO",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0058",
+   "supplier": "훼스토",
+   "product": "SOL VALVE",
+   "spec": "VUVG-S18-M52-RT-G14-1H2RL-W3",
+   "maker": "FESTO",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0059",
+   "supplier": "훼스토",
+   "product": "SOL VALVE",
+   "spec": "VUVG-S18-P53C-T-G14-1H2RL-W3",
+   "maker": "FESTO",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0060",
+   "supplier": "훼스토",
+   "product": "SOL VALVE",
+   "spec": "VUVG-S18-B52-T-G14-1H2RL-W3",
+   "maker": "FESTO",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0061",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU0604B-100",
+   "maker": "SMC",
+   "qty": 3,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0062",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU0604BU-100",
+   "maker": "SMC",
+   "qty": 9,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0063",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU0805B-100",
+   "maker": "SMC",
+   "qty": 24,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0064",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU0805BU-100",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0065",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU1065B-100",
+   "maker": "SMC",
+   "qty": 27,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0066",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU1065BU-100",
+   "maker": "SMC",
+   "qty": 6,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0067",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU1065C-100",
+   "maker": "SMC",
+   "qty": 3,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0068",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU1208B-100",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0069",
+   "supplier": "대아상사",
+   "product": "TUBE",
+   "spec": "TU1208BU-100",
+   "maker": "SMC",
+   "qty": 4,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0070",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-SY5120-5LOZ-C6-Q",
+   "maker": "SMC",
+   "qty": 4,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0071",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-SY5220-5LOZ-C6-Q",
+   "maker": "SMC",
+   "qty": 16,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0072",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-SY5230-5LOZ-C8-Q",
+   "maker": "SMC",
+   "qty": 49,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0073",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-SY5120-5LOZ-C6-X700",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0074",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-SY5220-5LOZ-C6-X700",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0075",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-SY5220-5LOZ-C8-X700",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0076",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-SY5230-5LOZ-C8-X700",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0077",
+   "supplier": "대아상사",
+   "product": "V/V",
+   "spec": "25A-VHK3A-08F-08FRL",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0078",
+   "supplier": "대아상사",
+   "product": "REGULATOR",
+   "spec": "25A-AR30-03B-B",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0079",
+   "supplier": "대아상사",
+   "product": "REGULATOR",
+   "spec": "25A-AR20K-02B-B",
+   "maker": "SMC",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0080",
+   "supplier": "대아상사",
+   "product": "PRESSURE SWITCH",
+   "spec": "25A-ZSE20-N-M5",
+   "maker": "SMC",
+   "qty": 3,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0081",
+   "supplier": "대아상사",
+   "product": "V/V",
+   "spec": "VHK3A-08F-08FRL",
+   "maker": "SMC",
+   "qty": 45,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0082",
+   "supplier": "대아상사",
+   "product": "V/V",
+   "spec": "VHS30-03A",
+   "maker": "SMC",
+   "qty": 13,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0083",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "VX230HA",
+   "maker": "SMC",
+   "qty": 4,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0084",
+   "supplier": "대아상사",
+   "product": "BRACKET",
+   "spec": "Y300T",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0085",
+   "supplier": "대아상사",
+   "product": "REGULATOR",
+   "spec": "AR20-01B-B",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0086",
+   "supplier": "대아상사",
+   "product": "REGULATOR",
+   "spec": "AR20K-01B-B",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0087",
+   "supplier": "대아상사",
+   "product": "REGULATOR",
+   "spec": "AR20K-02B-B",
+   "maker": "SMC",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0088",
+   "supplier": "대아상사",
+   "product": "REGULATOR",
+   "spec": "AR30-03B-B",
+   "maker": "SMC",
+   "qty": 5,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0089",
+   "supplier": "대아상사",
+   "product": "FILTER",
+   "spec": "AF30-03-A",
+   "maker": "SMC",
+   "qty": 3,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0090",
+   "supplier": "대아상사",
+   "product": "E-REGULATOR",
+   "spec": "ITV3030-RC4L",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0091",
+   "supplier": "대아상사",
+   "product": "PRESSURE SWITCH",
+   "spec": "ISE20-N-M5",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0092",
+   "supplier": "대아상사",
+   "product": "FITTING",
+   "spec": "KQ2L10-02NS",
+   "maker": "SMC",
+   "qty": 100,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0093",
+   "supplier": "대아상사",
+   "product": "FITTING",
+   "spec": "KQ2L08-02NS",
+   "maker": "SMC",
+   "qty": 140,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0094",
+   "supplier": "대아상사",
+   "product": "REGULATOR GAUGE",
+   "spec": "G46-10-01-SRB",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0095",
+   "supplier": "대아상사",
+   "product": "S/W GENDER",
+   "spec": "TGW10-01Z-CJUU1616",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0096",
+   "supplier": "대아상사",
+   "product": "FLOW SWITCH",
+   "spec": "PFMB7102-04",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0097",
+   "supplier": "대아상사",
+   "product": "E-REGULATOR",
+   "spec": "25A-ITV3030-RC4L",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0098",
+   "supplier": "대아상사",
+   "product": "V/V",
+   "spec": "25A-VHS30-03A",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0099",
+   "supplier": "대아상사",
+   "product": "SOL V/V",
+   "spec": "25A-VH230HA",
+   "maker": "SMC",
+   "qty": 6,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0100",
+   "supplier": "대아상사",
+   "product": "FILTER",
+   "spec": "ZFC76-B",
+   "maker": "SMC",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0101",
+   "supplier": "대아상사",
+   "product": "FILTER BRACKET",
+   "spec": "ZFC-BR004",
+   "maker": "SMC",
+   "qty": 30,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0102",
+   "supplier": "대아상사",
+   "product": "FITTING",
+   "spec": "KQ2U10-00",
+   "maker": "SMC",
+   "qty": 130,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0103",
+   "supplier": "대아상사",
+   "product": "SILINCE",
+   "spec": "AN20-02",
+   "maker": "SMC",
+   "qty": 250,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0104",
+   "supplier": "현전사",
+   "product": "도어락",
+   "spec": "D4SL-N2NFA-D",
+   "maker": "OMRON",
+   "qty": 65,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0105",
+   "supplier": "현전사",
+   "product": "도어락",
+   "spec": "D4SL-N2NFG-D",
+   "maker": "OMRON",
+   "qty": 5,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0106",
+   "supplier": "현전사",
+   "product": "도어락 KEY",
+   "spec": "D4SL-NK3",
+   "maker": "OMRON",
+   "qty": 80,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0107",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F3SG-4SRB0280-25-H",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0108",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F3SG-4SRB0520-25-H",
+   "maker": "OMRON",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0109",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F39-JGR3K-L",
+   "maker": "OMRON",
+   "qty": 3,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0110",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F39-JGR3K-D",
+   "maker": "OMRON",
+   "qty": 4,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0111",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F39-JG10A-L(사급)",
+   "maker": "OMRON",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0112",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F39-JG10A-D(사급)",
+   "maker": "OMRON",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0113",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F39-LSGTB-SJ",
+   "maker": "OMRON",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0114",
+   "supplier": "현전사",
+   "product": "라이트 커튼",
+   "spec": "F39-LSGA",
+   "maker": "OMRON",
+   "qty": 17,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0115",
+   "supplier": "동화자동화",
+   "product": "서보 앰프",
+   "spec": "MR-J3-350T-ED",
+   "maker": "MITSUBISHI",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0116",
+   "supplier": "동화자동화",
+   "product": "서보 앰프",
+   "spec": "MR-J4-350A-RU",
+   "maker": "MITSUBISHI",
+   "qty": 3,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0117",
+   "supplier": "동화자동화",
+   "product": "서보 모터",
+   "spec": "HG-SR352B",
+   "maker": "MITSUBISHI",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0118",
+   "supplier": "동화자동화",
+   "product": "서보 모터",
+   "spec": "HG-SR202",
+   "maker": "MITSUBISHI",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0119",
+   "supplier": "동화자동화",
+   "product": "서보 앰프",
+   "spec": "MR-J4-200B",
+   "maker": "MITSUBISHI",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0120",
+   "supplier": "동화자동화",
+   "product": "서보 앰프",
+   "spec": "MR-J4-70B",
+   "maker": "MITSUBISHI",
+   "qty": 2,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0121",
+   "supplier": "동화자동화",
+   "product": "서보 앰프",
+   "spec": "MR-J4-40B",
+   "maker": "MITSUBISHI",
+   "qty": 8,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0122",
+   "supplier": "동화자동화",
+   "product": "서보 앰프",
+   "spec": "MR-J4-100A",
+   "maker": "MITSUBISHI",
+   "qty": 1,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0123",
+   "supplier": "동화자동화",
+   "product": "서보 모터",
+   "spec": "HG-KR43",
+   "maker": "MITSUBISHI",
+   "qty": 2,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0124",
+   "supplier": "동화자동화",
+   "product": "CN3 케이블",
+   "spec": "C20MS-20S",
+   "maker": "MITSUBISHI",
+   "qty": 10,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0125",
+   "supplier": "미스미",
+   "product": "온도센서",
+   "spec": "TM-NTC  M6 HIS2203",
+   "maker": "HIENG",
+   "qty": 20,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0126",
+   "supplier": "미스미",
+   "product": "인덱스 플런저",
+   "spec": "PXRKN16",
+   "maker": "MISUMI",
+   "qty": 400,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0127",
+   "supplier": "미스미",
+   "product": "인덱스 플런저",
+   "spec": "PXRAN12",
+   "maker": "MISUMI",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0128",
+   "supplier": "미스미",
+   "product": "MAGNETIC CATCH",
+   "spec": "MGCBU70",
+   "maker": "MISUMI",
+   "qty": 50,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "i0129",
+   "supplier": "미스미",
+   "product": "널링 노브",
+   "spec": "NKOSC6-25-20",
+   "maker": "MISUMI",
+   "qty": 0,
+   "use": {},
+   "memo": {}
+  }
+ ]
+}
