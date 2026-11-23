@@ -133,7 +133,7 @@ tr:hover td{background:#faf9f7}
 &lt;/head&gt;
 &lt;body&gt;
 &lt;h1&gt;구매품 발주 현황 대시보드&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 15:18 &amp;nbsp;·&amp;nbsp; 총 86건&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 17:35 &amp;nbsp;·&amp;nbsp; 총 86건&lt;/div&gt;
 &lt;div class=&quot;error-box&quot;&gt;⚠️ &lt;b&gt;320Ah PMC&lt;/b&gt; 파일을 읽지 못했어요. 경로를 확인해 주세요.&lt;/div&gt;
 
 &lt;div class=&quot;summary-grid&quot;&gt;
@@ -498,7 +498,6 @@ h1{font-size:20px;font-weight:500;margin-bottom:4px}
 table{width:100%;border-collapse:collapse;font-size:12.5px;table-layout:fixed}
 th{font-size:11px;font-weight:600;color:#888;text-align:left;padding:9px 10px;border-bottom:2px solid #e8e8e4;white-space:nowrap;background:#faf9f7;cursor:pointer}
 th:hover{background:#f0efeb}
-/* 컬럼 폭: 구매업체/메이커/수량은 좁게, 품명/규격에 공간 배분 */
 th:nth-child(1){width:11%}
 th:nth-child(2){width:9%}
 th:nth-child(3){width:20%}
@@ -530,34 +529,45 @@ tr:hover td{background:#f0f4fa !important}
 .print-only{display:none}
 .btn-print{font-size:12px;padding:5px 14px;border-radius:8px;border:1px solid #185FA5;background:#E8F1FB;color:#185FA5;font-weight:600;cursor:pointer}
 .btn-print:hover{background:#d6e6f7}
-@media print{
-  @page{size:A4 landscape;margin:10mm}
-  html,body{background:#fff !important;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  body{padding:0}
-  .container{max-width:none}
-  h1,.updated,.summary-grid,#supplier-panel,.no-print,.filters,.count-info,.pager,.memo{display:none !important}
-  .print-only{display:block}
-  .card{border:none;border-radius:0;padding:0;margin:0}
-  .card-title{display:none}
-  .tbl-wrap{overflow:visible}
-  table{font-size:10.5px;table-layout:fixed;width:100%}
-  thead{display:table-header-group}
-  tr{page-break-inside:avoid;break-inside:avoid}
-  th{background:#eee !important;color:#000;border:1px solid #888;padding:5px 6px;white-space:normal}
-  td{white-space:normal;overflow:visible;text-overflow:clip;padding:5px 6px;border:1px solid #bbb;vertical-align:middle;word-break:break-word}
-  tbody tr:nth-child(even) td{background:transparent !important}
-  .pc{display:table-cell !important}
-  th:nth-child(1){width:10%} th:nth-child(2){width:8%} th:nth-child(3){width:17%}
-  th:nth-child(4){width:23%} th:nth-child(5){width:7%} th:nth-child(6){width:7%}
-  th:nth-child(7){width:7%} th:nth-child(8){width:9%} th:nth-child(9){width:12%}
-}
+.btn-edit{font-size:12px;padding:5px 14px;border-radius:8px;border:1px solid #D9A441;background:#FAEEDA;color:#854F0B;font-weight:600;cursor:pointer}
+.btn-edit:hover{background:#f6e2c0}
+/* 상단 데이터 상태 표시 */
+.src{font-size:11px;padding:2px 8px;border-radius:999px;margin-left:6px;font-weight:500}
+.src.live{background:#EAF3DE;color:#27500A}
+.src.snap{background:#F1EFE8;color:#666}
+/* 수정모드 */
+.edit-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:#FFF8EC;border:1px solid #F0C987;border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:#633806}
+.edit-bar button{font-size:12px;padding:5px 12px;border-radius:8px;border:1px solid #ddd;background:#fff;color:#333;cursor:pointer;font-family:inherit}
+.edit-bar .btn-save{background:#185FA5;border-color:#185FA5;color:#fff;font-weight:600}
+.edit-bar .btn-save:disabled{opacity:.6;cursor:wait}
+.edit-bar .sp{flex:1}
+#edit-msg{color:#C0392B;font-weight:600}
+.tok-box{background:#fff;border:1px solid #378ADD;border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:12px;color:#333;line-height:1.8}
+.tok-box input{font-size:12px;padding:5px 10px;border-radius:8px;border:1px solid #ddd;width:320px;max-width:100%}
+.tok-box button{font-size:12px;padding:5px 12px;border-radius:8px;border:1px solid #185FA5;background:#185FA5;color:#fff;cursor:pointer;margin-left:4px}
+.tok-box button.sub{background:#fff;color:#333;border-color:#ddd}
+.tok-box .hint{color:#888;font-size:11px}
+.ec{display:none;width:44px;text-align:center}
+body.editing .ec{display:table-cell}
+body.editing table{min-width:980px}
+body.editing td{overflow:visible;white-space:normal;padding:4px 4px;vertical-align:top}
+body.editing tbody tr:nth-child(even) td{background:#fff}
+body.editing tr:hover td{background:#fffaf0 !important}
+.ei{width:100%;font-size:12px;padding:5px 6px;border:1px solid #dcdcd6;border-radius:6px;font-family:inherit;background:#fffdf8;color:#2c2c2a}
+.ei:focus{outline:none;border-color:#185FA5;background:#fff}
+.ei.num{text-align:right}
+textarea.ei{margin-top:3px;resize:vertical;min-height:26px;font-size:11px;line-height:1.4}
+.del{border:none;background:none;cursor:pointer;font-size:15px;padding:4px}
+.del:hover{transform:scale(1.15)}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#2c2c2a;color:#fff;padding:10px 18px;border-radius:10px;font-size:13px;display:none;z-index:99;max-width:90%;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+#toast.err{background:#C0392B}
 @media (max-width:1100px){.vendor-grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:700px){
   .vendor-grid{grid-template-columns:repeat(2,1fr)}
   .summary-grid{grid-template-columns:1fr}
   body{padding:14px 10px}
   .tbl-wrap{overflow-x:visible}
-  table{min-width:0;table-layout:auto;display:block}
+  table,body.editing table{min-width:0;table-layout:auto;display:block}
   thead{display:none}
   tbody,tr,td{display:block;width:auto}
   tbody tr{background:#fff;border:1px solid #e8e8e4;border-radius:10px;padding:10px 12px;margin-bottom:10px}
@@ -568,26 +578,47 @@ tr:hover td{background:#f0f4fa !important}
   .filters input{width:100%}
   .filters select{flex:1 1 45%}
 }
+@media print{
+  @page{size:A4 landscape;margin:10mm}
+  html,body{background:#fff !important;padding:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .container{max-width:none}
+  h1,.updated,.summary-grid,#supplier-panel,.no-print,.filters,.count-info,.pager,.memo,#toast{display:none !important}
+  .print-only{display:block}
+  .card{border:none;border-radius:0;padding:0;margin:0}
+  .card-title{display:none}
+  .tbl-wrap{overflow:visible}
+  table{font-size:10.5px;table-layout:fixed;width:100%;min-width:0 !important}
+  thead{display:table-header-group}
+  tr{page-break-inside:avoid;break-inside:avoid}
+  th{background:#eee !important;color:#000;border:1px solid #888;padding:5px 6px;white-space:normal}
+  td{white-space:normal;overflow:visible;text-overflow:clip;padding:5px 6px;border:1px solid #bbb;vertical-align:middle;word-break:break-word}
+  tbody tr:nth-child(even) td{background:transparent !important}
+  .pc{display:table-cell !important}
+  .ec{display:none !important}
+  th:nth-child(1){width:10%} th:nth-child(2){width:8%} th:nth-child(3){width:17%}
+  th:nth-child(4){width:23%} th:nth-child(5){width:7%} th:nth-child(6){width:7%}
+  th:nth-child(7){width:7%} th:nth-child(8){width:9%} th:nth-child(9){width:12%}
+}
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div class=&quot;container&quot;&gt;
 &lt;div id=&quot;print-head&quot; class=&quot;print-only&quot;&gt;&lt;/div&gt;
 &lt;h1&gt;📦 재고 관리 대시보드&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 15:18 · 128건 / 4,756개&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;&lt;span id=&quot;upd&quot;&gt;&lt;/span&gt;&lt;span id=&quot;src-badge&quot;&gt;&lt;/span&gt;&lt;/div&gt;
 
 &lt;div class=&quot;summary-grid&quot;&gt;
   &lt;div class=&quot;stat-card active&quot; id=&quot;stat-all&quot; onclick=&quot;filterByAll()&quot;&gt;
     &lt;div class=&quot;stat-label&quot;&gt;재고품목&lt;/div&gt;
-    &lt;div class=&quot;stat-num&quot;&gt;128&lt;/div&gt;
+    &lt;div class=&quot;stat-num&quot; id=&quot;n-items&quot;&gt;0&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;stat-card&quot; id=&quot;stat-suppliers&quot; onclick=&quot;showSupplierFilter()&quot;&gt;
     &lt;div class=&quot;stat-label&quot;&gt;구매업체&lt;/div&gt;
-    &lt;div class=&quot;stat-num&quot;&gt;14&lt;/div&gt;
+    &lt;div class=&quot;stat-num&quot; id=&quot;n-sup&quot;&gt;0&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;stat-card&quot; id=&quot;stat-qty&quot; onclick=&quot;filterByQty()&quot;&gt;
     &lt;div class=&quot;stat-label&quot;&gt;총 재고수량&lt;/div&gt;
-    &lt;div class=&quot;stat-num&quot;&gt;4,756&lt;/div&gt;
+    &lt;div class=&quot;stat-num&quot; id=&quot;n-qty&quot;&gt;0&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -606,7 +637,28 @@ tr:hover td{background:#f0f4fa !important}
     &lt;/select&gt;
     &lt;input id=&quot;fSearch&quot; placeholder=&quot;품명/규격 검색...&quot; oninput=&quot;go()&quot; /&gt;
     &lt;button class=&quot;btn-print&quot; onclick=&quot;window.print()&quot; title=&quot;현재 필터/정렬 그대로 전체 목록을 인쇄합니다&quot;&gt;🖨️ 인쇄&lt;/button&gt;
+    &lt;button class=&quot;btn-edit&quot; id=&quot;btnEdit&quot; onclick=&quot;toggleEdit()&quot; style=&quot;display:none&quot;&gt;✏️ 수정모드&lt;/button&gt;
   &lt;/div&gt;
+
+  &lt;div id=&quot;tok-box&quot; class=&quot;tok-box no-print&quot; style=&quot;display:none&quot;&gt;
+    &lt;b&gt;🔑 GitHub 토큰 입력&lt;/b&gt; &lt;span class=&quot;hint&quot;&gt;(이 PC 브라우저에만 저장되고, 공유 파일에는 들어가지 않습니다)&lt;/span&gt;&lt;br&gt;
+    &lt;input id=&quot;tokIn&quot; type=&quot;password&quot; placeholder=&quot;github_pat_...&quot; /&gt;
+    &lt;button onclick=&quot;saveTok()&quot;&gt;확인&lt;/button&gt;
+    &lt;button class=&quot;sub&quot; onclick=&quot;hideTok()&quot;&gt;닫기&lt;/button&gt;&lt;br&gt;
+    &lt;span class=&quot;hint&quot;&gt;발급: GitHub → Settings → Developer settings → Fine-grained tokens → Generate → 저장소 &lt;b&gt;pmg2328-cloud/BOM-&lt;/b&gt; 만 선택 → Permissions의 Contents: &lt;b&gt;Read and write&lt;/b&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;edit-bar&quot; class=&quot;edit-bar no-print&quot; style=&quot;display:none&quot;&gt;
+    &lt;b&gt;✏️ 수정모드&lt;/b&gt;
+    &lt;span&gt;칸을 눌러 바로 고치세요&lt;/span&gt;
+    &lt;button onclick=&quot;addRow()&quot;&gt;＋ 행 추가&lt;/button&gt;
+    &lt;span id=&quot;edit-msg&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;sp&quot;&gt;&lt;/span&gt;
+    &lt;button onclick=&quot;forgetTok()&quot; title=&quot;이 PC에 저장된 토큰을 지웁니다&quot;&gt;🔑 토큰 해제&lt;/button&gt;
+    &lt;button onclick=&quot;cancelEdit()&quot;&gt;취소&lt;/button&gt;
+    &lt;button class=&quot;btn-save&quot; id=&quot;btnSave&quot; onclick=&quot;saveEdit()&quot;&gt;💾 수정완료&lt;/button&gt;
+  &lt;/div&gt;
+
   &lt;div class=&quot;count-info&quot; id=&quot;cnt&quot;&gt;&lt;/div&gt;
   &lt;div class=&quot;tbl-wrap&quot;&gt;
     &lt;table&gt;
@@ -616,10 +668,11 @@ tr:hover td{background:#f0f4fa !important}
         &lt;th onclick=&quot;sortBy('product')&quot;&gt;품명 ↕&lt;/th&gt;
         &lt;th&gt;규격&lt;/th&gt;
         &lt;th onclick=&quot;sortBy('qty')&quot;&gt;재고수량 ↕&lt;/th&gt;
-        &lt;th onclick=&quot;sortBy('use_cur')&quot;&gt;11월 사용 ↕&lt;/th&gt;
-        &lt;th onclick=&quot;sortBy('use_nxt')&quot;&gt;12월 사용 ↕&lt;/th&gt;
+        &lt;th onclick=&quot;sortBy('use_cur')&quot; id=&quot;th-cur&quot;&gt;당월 사용 ↕&lt;/th&gt;
+        &lt;th onclick=&quot;sortBy('use_nxt')&quot; id=&quot;th-nxt&quot;&gt;익월 사용 ↕&lt;/th&gt;
         &lt;th class=&quot;pc&quot;&gt;실사수량&lt;/th&gt;
         &lt;th class=&quot;pc&quot;&gt;비고&lt;/th&gt;
+        &lt;th class=&quot;ec&quot;&gt;삭제&lt;/th&gt;
       &lt;/tr&gt;&lt;/thead&gt;
       &lt;tbody id=&quot;tbody&quot;&gt;&lt;/tbody&gt;
     &lt;/table&gt;
@@ -632,188 +685,368 @@ tr:hover td{background:#f0f4fa !important}
 &lt;/div&gt;
 &lt;/div&gt;&lt;!-- /container --&gt;
 
-&lt;script&gt;
-const ALL_ITEMS = [{&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;리스트 참조&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULRATOR&quot;, &quot;spec&quot;: &quot;25A-AR20K-02B-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 90, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;GAUGE&quot;, &quot;spec&quot;: &quot;25A-G46-10-BCI04730&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 86, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM20-50Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 105, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM32-50Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 103, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM63-25Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 120, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CYLINDER CABLE&quot;, &quot;spec&quot;: &quot;M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 592, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SILENCER&quot;, &quot;spec&quot;: &quot;ESKA-Z2802-070&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 45, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SILENCER&quot;, &quot;spec&quot;: &quot;ESKA-Z2804-070&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 32, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;T0425W-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 30, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;PRESSURE SWITCH&quot;, &quot;spec&quot;: &quot;25A-ISE20-N-M5&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 37, &quot;memo_cur&quot;: &quot;헝가리#12 국부냉각 60대&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;VACUUM SENSOR CONTROLER&quot;, &quot;spec&quot;: &quot;25A-ZSE20-N-M5-LB&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 45, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;ZS-46-N1&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 18, &quot;memo_cur&quot;: &quot;헝가리#12 국부냉각 60대&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CABLE&quot;, &quot;spec&quot;: &quot;ZS-46-3L&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 114, &quot;memo_cur&quot;: &quot;헝가리#12 국부냉각 60대&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;VX214NA&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: -5, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER&quot;, &quot;spec&quot;: &quot;25A-AF30-03-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;25A-AR30-03-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM80-25Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;VALVE&quot;, &quot;spec&quot;: &quot;25A-VHS30-03-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FLOW SWITCH&quot;, &quot;spec&quot;: &quot;PFMB7102-04-D-R&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;DIGITAL FLOW S/W GENDER&quot;, &quot;spec&quot;: &quot;TGW10-01Z-CJUU1616&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TH0604R-20&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;SERVO MOTOR&quot;, &quot;spec&quot;: &quot;HG-SR352B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 32, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;삼원FA&quot;, &quot;product&quot;: &quot;SERVO MOTOR&quot;, &quot;spec&quot;: &quot;HG-KR43&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 41, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;디에스시스템&quot;, &quot;product&quot;: &quot;LM GUIDE&quot;, &quot;spec&quot;: &quot;HSR15A8UU+1420L&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;디에스시스템&quot;, &quot;product&quot;: &quot;구리스&quot;, &quot;spec&quot;: &quot;KMF-400&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 90, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;HANDLE&quot;, &quot;spec&quot;: &quot;HHMU100&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 133, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;GREASE NIPPLE&quot;, &quot;spec&quot;: &quot;GPAS1&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;보아테크&quot;, &quot;product&quot;: &quot;Silencer for GXS160F&quot;, &quot;spec&quot;: &quot;NR5211001&quot;, &quot;maker&quot;: &quot;edwards&quot;, &quot;qty&quot;: 2, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;에드워드&quot;, &quot;product&quot;: &quot;GXS DRY PUMP SYSTEMS&quot;, &quot;spec&quot;: &quot;GXS160F LV MD RE CA&quot;, &quot;maker&quot;: &quot;edwards&quot;, &quot;qty&quot;: -2, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM GUIDE&quot;, &quot;spec&quot;: &quot;HSR15A8UU-1380L(G30)&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM GUIDE&quot;, &quot;spec&quot;: &quot;HSR25A4UU+1240L&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM BUSH&quot;, &quot;spec&quot;: &quot;LMK50LUU&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 12, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM BUSH&quot;, &quot;spec&quot;: &quot;LMK50UU&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 204, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;에스엠이앤씨&quot;, &quot;product&quot;: &quot;노즐패드&quot;, &quot;spec&quot;: &quot;V10.0 N04 70도 DCP&quot;, &quot;maker&quot;: &quot;SMENC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;인아오리엔탈&quot;, &quot;product&quot;: &quot;STEPPING MOTOR&quot;, &quot;spec&quot;: &quot;CRK564AKD-T10&quot;, &quot;maker&quot;: &quot;ORIENTAL&quot;, &quot;qty&quot;: 59, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;키엔스&quot;, &quot;product&quot;: &quot;바코드리더기&quot;, &quot;spec&quot;: &quot;SR-X100W&quot;, &quot;maker&quot;: &quot;KEYENCE&quot;, &quot;qty&quot;: 45, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;한일전자&quot;, &quot;product&quot;: &quot;DAMPER ACTUATOR&quot;, &quot;spec&quot;: &quot;HM-DAL30-OC-24V&quot;, &quot;maker&quot;: &quot;HANIL&quot;, &quot;qty&quot;: 150, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;E2EH-X3C1&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 219, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;PHOTO SENSOR&quot;, &quot;spec&quot;: &quot;E3Z-LT61&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;PHOTO SENSOR&quot;, &quot;spec&quot;: &quot;E3Z-T61&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 160, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;EE-SX676WR&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 253, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;EE-SX772A&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 100, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;EE-SX872&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 20, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F3SG-4RB0520-25-H&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JG10A-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JG10A-L&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JGR3K-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JGR3K-L&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-LSGTB-SJ&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;LIGHT CURTAIN BKT&quot;, &quot;spec&quot;: &quot;F39-LSGA&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 68, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F3SG-4SRB0280-25-F&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;DFM-80-25-P-A-KF&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;DFM-20-50-P-A-KF&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;QSMP-M6X0.75-4&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 376, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;FILTER RAGULATOR&quot;, &quot;spec&quot;: &quot;LFR-1/4-D-MINI&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;PRESSURE SENSOR&quot;, &quot;spec&quot;: &quot;SPAN-B-B11R-R18M-PN-L1&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;SOL VALVE&quot;, &quot;spec&quot;: &quot;VUVG-S18-M52-RT-G14-1H2RL-W3&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;SOL VALVE&quot;, &quot;spec&quot;: &quot;VUVG-S18-P53C-T-G14-1H2RL-W3&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;SOL VALVE&quot;, &quot;spec&quot;: &quot;VUVG-S18-B52-T-G14-1H2RL-W3&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0604B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0604BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 9, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0805B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 24, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0805BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1065B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 27, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1065BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 6, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1065C-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1208B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1208BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 4, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5120-5LOZ-C6-Q&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 4, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5220-5LOZ-C6-Q&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 16, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5230-5LOZ-C8-Q&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 49, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5120-5LOZ-C6-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5220-5LOZ-C6-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5220-5LOZ-C8-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5230-5LOZ-C8-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;25A-VHK3A-08F-08FRL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;25A-AR30-03B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;25A-AR20K-02B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;PRESSURE SWITCH&quot;, &quot;spec&quot;: &quot;25A-ZSE20-N-M5&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;VHK3A-08F-08FRL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 45, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;VHS30-03A&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 13, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;VX230HA&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 4, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;BRACKET&quot;, &quot;spec&quot;: &quot;Y300T&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR20-01B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR20K-01B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR20K-02B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR30-03B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 5, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER&quot;, &quot;spec&quot;: &quot;AF30-03-A&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;E-REGULATOR&quot;, &quot;spec&quot;: &quot;ITV3030-RC4L&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;KQ2L10-02NS&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 100, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;KQ2L08-02NS&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 140, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR GAUGE&quot;, &quot;spec&quot;: &quot;G46-10-01-SRB&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;S/W GENDER&quot;, &quot;spec&quot;: &quot;TGW10-01Z-CJUU1616&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FLOW SWITCH&quot;, &quot;spec&quot;: &quot;PFMB7102-04&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;E-REGULATOR&quot;, &quot;spec&quot;: &quot;25A-ITV3030-RC4L&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;25A-VHS30-03A&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-VH230HA&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 6, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER&quot;, &quot;spec&quot;: &quot;ZFC76-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER BRACKET&quot;, &quot;spec&quot;: &quot;ZFC-BR004&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 30, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;KQ2U10-00&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 130, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SILINCE&quot;, &quot;spec&quot;: &quot;AN20-02&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 250, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;도어락&quot;, &quot;spec&quot;: &quot;D4SL-N2NFA-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 65, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;도어락&quot;, &quot;spec&quot;: &quot;D4SL-N2NFG-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 5, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;도어락 KEY&quot;, &quot;spec&quot;: &quot;D4SL-NK3&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 80, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F3SG-4SRB0280-25-H&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F3SG-4SRB0520-25-H&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JGR3K-L&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 3, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JGR3K-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 4, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JG10A-L(사급)&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JG10A-D(사급)&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-LSGTB-SJ&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-LSGA&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 17, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J3-350T-ED&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-350A-RU&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 3, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 모터&quot;, &quot;spec&quot;: &quot;HG-SR352B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 모터&quot;, &quot;spec&quot;: &quot;HG-SR202&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-200B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-70B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 2, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-40B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 8, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-100A&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 1, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 모터&quot;, &quot;spec&quot;: &quot;HG-KR43&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 2, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;CN3 케이블&quot;, &quot;spec&quot;: &quot;C20MS-20S&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 10, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;온도센서&quot;, &quot;spec&quot;: &quot;TM-NTC  M6 HIS2203&quot;, &quot;maker&quot;: &quot;HIENG&quot;, &quot;qty&quot;: 20, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;인덱스 플런저&quot;, &quot;spec&quot;: &quot;PXRKN16&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 400, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;인덱스 플런저&quot;, &quot;spec&quot;: &quot;PXRAN12&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;MAGNETIC CATCH&quot;, &quot;spec&quot;: &quot;MGCBU70&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 50, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}, {&quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;널링 노브&quot;, &quot;spec&quot;: &quot;NKOSC6-25-20&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 0, &quot;use_cur&quot;: 0, &quot;memo_cur&quot;: &quot;&quot;, &quot;use_nxt&quot;: 0, &quot;memo_nxt&quot;: &quot;&quot;}];
+&lt;datalist id=&quot;dl-sup&quot;&gt;&lt;/datalist&gt;
+&lt;div id=&quot;toast&quot;&gt;&lt;/div&gt;
 
+&lt;script&gt;
+const CFG = {pages: &quot;https://pmg2328-cloud.github.io/BOM-/inventory.json&quot;, api: &quot;https://api.github.com/repos/pmg2328-cloud/BOM-/contents/inventory.json&quot;};
+let DATA = {&quot;updated&quot;: &quot;2026-09-22 08:29&quot;, &quot;items&quot;: [{&quot;id&quot;: &quot;i0001&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;리스트 참조&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0002&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULRATOR&quot;, &quot;spec&quot;: &quot;25A-AR20K-02B-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 90, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0003&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;GAUGE&quot;, &quot;spec&quot;: &quot;25A-G46-10-BCI04730&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 86, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0004&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM20-50Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 105, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0005&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM32-50Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 103, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0006&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM63-25Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 120, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0007&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CYLINDER CABLE&quot;, &quot;spec&quot;: &quot;M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 592, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0008&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SILENCER&quot;, &quot;spec&quot;: &quot;ESKA-Z2802-070&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 45, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0009&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SILENCER&quot;, &quot;spec&quot;: &quot;ESKA-Z2804-070&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 32, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0010&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;T0425W-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 30, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0011&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;PRESSURE SWITCH&quot;, &quot;spec&quot;: &quot;25A-ISE20-N-M5&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 37, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0012&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;VACUUM SENSOR CONTROLER&quot;, &quot;spec&quot;: &quot;25A-ZSE20-N-M5-LB&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 45, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0013&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;ZS-46-N1&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 18, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0014&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CABLE&quot;, &quot;spec&quot;: &quot;ZS-46-3L&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 114, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0015&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;VX214NA&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: -5, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0016&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER&quot;, &quot;spec&quot;: &quot;25A-AF30-03-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0017&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;25A-AR30-03-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0018&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;CYLINDER&quot;, &quot;spec&quot;: &quot;25A-MGPM80-25Z-M9NL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0019&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;VALVE&quot;, &quot;spec&quot;: &quot;25A-VHS30-03-D&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0020&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FLOW SWITCH&quot;, &quot;spec&quot;: &quot;PFMB7102-04-D-R&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0021&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;DIGITAL FLOW S/W GENDER&quot;, &quot;spec&quot;: &quot;TGW10-01Z-CJUU1616&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0022&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TH0604R-20&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0023&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;SERVO MOTOR&quot;, &quot;spec&quot;: &quot;HG-SR352B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 32, &quot;use&quot;: {&quot;26.09&quot;: 2}, &quot;memo&quot;: {&quot;26.09&quot;: &quot;PMC 320 미세충방 2EA&quot;}}, {&quot;id&quot;: &quot;i0024&quot;, &quot;supplier&quot;: &quot;삼원FA&quot;, &quot;product&quot;: &quot;SERVO MOTOR&quot;, &quot;spec&quot;: &quot;HG-KR43&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 41, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0025&quot;, &quot;supplier&quot;: &quot;디에스시스템&quot;, &quot;product&quot;: &quot;LM GUIDE&quot;, &quot;spec&quot;: &quot;HSR15A8UU+1420L&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0026&quot;, &quot;supplier&quot;: &quot;디에스시스템&quot;, &quot;product&quot;: &quot;구리스&quot;, &quot;spec&quot;: &quot;KMF-400&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 90, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0027&quot;, &quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;HANDLE&quot;, &quot;spec&quot;: &quot;HHMU100&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 133, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0028&quot;, &quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;GREASE NIPPLE&quot;, &quot;spec&quot;: &quot;GPAS1&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0029&quot;, &quot;supplier&quot;: &quot;보아테크&quot;, &quot;product&quot;: &quot;Silencer for GXS160F&quot;, &quot;spec&quot;: &quot;NR5211001&quot;, &quot;maker&quot;: &quot;edwards&quot;, &quot;qty&quot;: 2, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0030&quot;, &quot;supplier&quot;: &quot;에드워드&quot;, &quot;product&quot;: &quot;GXS DRY PUMP SYSTEMS&quot;, &quot;spec&quot;: &quot;GXS160F LV MD RE CA&quot;, &quot;maker&quot;: &quot;edwards&quot;, &quot;qty&quot;: -2, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0031&quot;, &quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM GUIDE&quot;, &quot;spec&quot;: &quot;HSR15A8UU-1380L(G30)&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0032&quot;, &quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM GUIDE&quot;, &quot;spec&quot;: &quot;HSR25A4UU+1240L&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0033&quot;, &quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM BUSH&quot;, &quot;spec&quot;: &quot;LMK50LUU&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 12, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0034&quot;, &quot;supplier&quot;: &quot;삼원자동화&quot;, &quot;product&quot;: &quot;LM BUSH&quot;, &quot;spec&quot;: &quot;LMK50UU&quot;, &quot;maker&quot;: &quot;THK&quot;, &quot;qty&quot;: 204, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0035&quot;, &quot;supplier&quot;: &quot;에스엠이앤씨&quot;, &quot;product&quot;: &quot;노즐패드&quot;, &quot;spec&quot;: &quot;V10.0 N04 70도 DCP&quot;, &quot;maker&quot;: &quot;SMENC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0036&quot;, &quot;supplier&quot;: &quot;인아오리엔탈&quot;, &quot;product&quot;: &quot;STEPPING MOTOR&quot;, &quot;spec&quot;: &quot;CRK564AKD-T10&quot;, &quot;maker&quot;: &quot;ORIENTAL&quot;, &quot;qty&quot;: 157, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0037&quot;, &quot;supplier&quot;: &quot;키엔스&quot;, &quot;product&quot;: &quot;바코드리더기&quot;, &quot;spec&quot;: &quot;SR-X100W&quot;, &quot;maker&quot;: &quot;KEYENCE&quot;, &quot;qty&quot;: 45, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0038&quot;, &quot;supplier&quot;: &quot;한일전자&quot;, &quot;product&quot;: &quot;DAMPER ACTUATOR&quot;, &quot;spec&quot;: &quot;HM-DAL30-OC-24V&quot;, &quot;maker&quot;: &quot;HANIL&quot;, &quot;qty&quot;: 150, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0039&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;E2EH-X3C1&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 219, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0040&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;PHOTO SENSOR&quot;, &quot;spec&quot;: &quot;E3Z-LT61&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0041&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;PHOTO SENSOR&quot;, &quot;spec&quot;: &quot;E3Z-T61&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 160, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0042&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;EE-SX676WR&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 253, &quot;use&quot;: {&quot;26.09&quot;: 1}, &quot;memo&quot;: {&quot;26.09&quot;: &quot;SPE#320 48CH HVC  10대\n원익 파손- 무상제공&quot;}}, {&quot;id&quot;: &quot;i0043&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;EE-SX772A&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 101, &quot;use&quot;: {&quot;26.09&quot;: 10}, &quot;memo&quot;: {&quot;26.09&quot;: &quot;SPE#320 48CH HVC  10대\n원익 파손- 2개 무상제공\n\nPMC#365 /4개\nPMC#320 /4개&quot;}}, {&quot;id&quot;: &quot;i0044&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SENSOR&quot;, &quot;spec&quot;: &quot;EE-SX872&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 20, &quot;use&quot;: {&quot;26.09&quot;: 13}, &quot;memo&quot;: {&quot;26.09&quot;: &quot;SPE#320 48CH HVC  10대\n원익 파손- 1개 무상제공\n\nPMC#365 /6개\nPMC#320 /6개&quot;}}, {&quot;id&quot;: &quot;i0045&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F3SG-4RB0520-25-H&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0046&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JG10A-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0047&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JG10A-L&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0048&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JGR3K-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0049&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-JGR3K-L&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0050&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;SAFETY LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F39-LSGTB-SJ&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0051&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;LIGHT CURTAIN BKT&quot;, &quot;spec&quot;: &quot;F39-LSGA&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 68, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0052&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;LIGHT CURTAIN&quot;, &quot;spec&quot;: &quot;F3SG-4SRB0280-25-F&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0053&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;DFM-80-25-P-A-KF&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0054&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;AIR CYLINDER&quot;, &quot;spec&quot;: &quot;DFM-20-50-P-A-KF&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0055&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;QSMP-M6X0.75-4&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 376, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0056&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;FILTER RAGULATOR&quot;, &quot;spec&quot;: &quot;LFR-1/4-D-MINI&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0057&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;PRESSURE SENSOR&quot;, &quot;spec&quot;: &quot;SPAN-B-B11R-R18M-PN-L1&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0058&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;SOL VALVE&quot;, &quot;spec&quot;: &quot;VUVG-S18-M52-RT-G14-1H2RL-W3&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0059&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;SOL VALVE&quot;, &quot;spec&quot;: &quot;VUVG-S18-P53C-T-G14-1H2RL-W3&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0060&quot;, &quot;supplier&quot;: &quot;훼스토&quot;, &quot;product&quot;: &quot;SOL VALVE&quot;, &quot;spec&quot;: &quot;VUVG-S18-B52-T-G14-1H2RL-W3&quot;, &quot;maker&quot;: &quot;FESTO&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0061&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0604B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0062&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0604BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 9, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0063&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0805B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 24, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0064&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU0805BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0065&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1065B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 27, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0066&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1065BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 6, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0067&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1065C-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0068&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1208B-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0069&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;TUBE&quot;, &quot;spec&quot;: &quot;TU1208BU-100&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 4, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0070&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5120-5LOZ-C6-Q&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 4, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0071&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5220-5LOZ-C6-Q&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 16, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0072&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5230-5LOZ-C8-Q&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 49, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0073&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5120-5LOZ-C6-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0074&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5220-5LOZ-C6-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0075&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5220-5LOZ-C8-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0076&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-SY5230-5LOZ-C8-X700&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0077&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;25A-VHK3A-08F-08FRL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0078&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;25A-AR30-03B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0079&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;25A-AR20K-02B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0080&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;PRESSURE SWITCH&quot;, &quot;spec&quot;: &quot;25A-ZSE20-N-M5&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0081&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;VHK3A-08F-08FRL&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 45, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0082&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;VHS30-03A&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 13, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0083&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;VX230HA&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 4, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0084&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;BRACKET&quot;, &quot;spec&quot;: &quot;Y300T&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0085&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR20-01B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0086&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR20K-01B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0087&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR20K-02B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0088&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR&quot;, &quot;spec&quot;: &quot;AR30-03B-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 5, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0089&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER&quot;, &quot;spec&quot;: &quot;AF30-03-A&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 3, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0090&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;E-REGULATOR&quot;, &quot;spec&quot;: &quot;ITV3030-RC4L&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0091&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;PRESSURE SWITCH&quot;, &quot;spec&quot;: &quot;ISE20-N-M5&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0092&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;KQ2L10-02NS&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 100, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0093&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;KQ2L08-02NS&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 140, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0094&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;REGULATOR GAUGE&quot;, &quot;spec&quot;: &quot;G46-10-01-SRB&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0095&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;S/W GENDER&quot;, &quot;spec&quot;: &quot;TGW10-01Z-CJUU1616&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0096&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FLOW SWITCH&quot;, &quot;spec&quot;: &quot;PFMB7102-04&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0097&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;E-REGULATOR&quot;, &quot;spec&quot;: &quot;25A-ITV3030-RC4L&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0098&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;V/V&quot;, &quot;spec&quot;: &quot;25A-VHS30-03A&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0099&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SOL V/V&quot;, &quot;spec&quot;: &quot;25A-VH230HA&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 6, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0100&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER&quot;, &quot;spec&quot;: &quot;ZFC76-B&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0101&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FILTER BRACKET&quot;, &quot;spec&quot;: &quot;ZFC-BR004&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 30, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0102&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;FITTING&quot;, &quot;spec&quot;: &quot;KQ2U10-00&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 130, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0103&quot;, &quot;supplier&quot;: &quot;대아상사&quot;, &quot;product&quot;: &quot;SILINCE&quot;, &quot;spec&quot;: &quot;AN20-02&quot;, &quot;maker&quot;: &quot;SMC&quot;, &quot;qty&quot;: 250, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0104&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;도어락&quot;, &quot;spec&quot;: &quot;D4SL-N2NFA-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 65, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0105&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;도어락&quot;, &quot;spec&quot;: &quot;D4SL-N2NFG-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 5, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0106&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;도어락 KEY&quot;, &quot;spec&quot;: &quot;D4SL-NK3&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 80, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0107&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F3SG-4SRB0280-25-H&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0108&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F3SG-4SRB0520-25-H&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0109&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JGR3K-L&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 3, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0110&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JGR3K-D&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 4, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0111&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JG10A-L(사급)&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0112&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-JG10A-D(사급)&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0113&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-LSGTB-SJ&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0114&quot;, &quot;supplier&quot;: &quot;현전사&quot;, &quot;product&quot;: &quot;라이트 커튼&quot;, &quot;spec&quot;: &quot;F39-LSGA&quot;, &quot;maker&quot;: &quot;OMRON&quot;, &quot;qty&quot;: 17, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0115&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J3-350T-ED&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0116&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-350A-RU&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 3, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0117&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 모터&quot;, &quot;spec&quot;: &quot;HG-SR352B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0118&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 모터&quot;, &quot;spec&quot;: &quot;HG-SR202&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0119&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-200B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0120&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-70B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 2, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0121&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-40B&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 8, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0122&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 앰프&quot;, &quot;spec&quot;: &quot;MR-J4-100A&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 1, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0123&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;서보 모터&quot;, &quot;spec&quot;: &quot;HG-KR43&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 2, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0124&quot;, &quot;supplier&quot;: &quot;동화자동화&quot;, &quot;product&quot;: &quot;CN3 케이블&quot;, &quot;spec&quot;: &quot;C20MS-20S&quot;, &quot;maker&quot;: &quot;MITSUBISHI&quot;, &quot;qty&quot;: 10, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0125&quot;, &quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;온도센서&quot;, &quot;spec&quot;: &quot;TM-NTC  M6 HIS2203&quot;, &quot;maker&quot;: &quot;HIENG&quot;, &quot;qty&quot;: 20, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0126&quot;, &quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;인덱스 플런저&quot;, &quot;spec&quot;: &quot;PXRKN16&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 400, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0127&quot;, &quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;인덱스 플런저&quot;, &quot;spec&quot;: &quot;PXRAN12&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0128&quot;, &quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;MAGNETIC CATCH&quot;, &quot;spec&quot;: &quot;MGCBU70&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 50, &quot;use&quot;: {}, &quot;memo&quot;: {}}, {&quot;id&quot;: &quot;i0129&quot;, &quot;supplier&quot;: &quot;미스미&quot;, &quot;product&quot;: &quot;널링 노브&quot;, &quot;spec&quot;: &quot;NKOSC6-25-20&quot;, &quot;maker&quot;: &quot;MISUMI&quot;, &quot;qty&quot;: 0, &quot;use&quot;: {}, &quot;memo&quot;: {}}]};
+let ITEMS = [];
 let cur = [], pgn = 1, sortKey = &quot;supplier&quot;, sortAsc = true, printing = false;
+let editMode = false, backupJSON = null, dirty = false;
 const PS = 200;
+const FIXED_VENDORS = [&quot;대아상사&quot;,&quot;현전사&quot;,&quot;동화자동화&quot;,&quot;훼스토&quot;,&quot;삼원자동화&quot;,&quot;디에스시스템&quot;,&quot;인아오리엔탈&quot;,&quot;키엔스&quot;,&quot;미스미&quot;,&quot;에스엠이앤씨&quot;];
+const $ = id =&gt; document.getElementById(id);
+
+// ===== 당월/익월 키 (YY.MM) : 날짜가 바뀌면 자동으로 넘어갑니다 =====
+function mkey(d){ return (d.getFullYear()%100) + &quot;.&quot; + String(d.getMonth()+1).padStart(2,&quot;0&quot;); }
+const _now = new Date();
+const CUR_KEY = mkey(_now);
+const NXT_KEY = mkey(new Date(_now.getFullYear(), _now.getMonth()+1, 1));
+const CUR_LBL = (_now.getMonth()+1) + &quot;월 사용&quot;;
+const NXT_LBL = ((_now.getMonth()+1) % 12 + 1) + &quot;월 사용&quot;;
+$(&quot;th-cur&quot;).textContent = CUR_LBL + &quot; ↕&quot;;
+$(&quot;th-nxt&quot;).textContent = NXT_LBL + &quot; ↕&quot;;
+
+// ===== 유틸 =====
+function esc(s){ return String(s==null?&quot;&quot;:s).replace(/&amp;/g,&quot;&amp;amp;&quot;).replace(/&lt;/g,&quot;&amp;lt;&quot;).replace(/&gt;/g,&quot;&amp;gt;&quot;).replace(/&quot;/g,&quot;&amp;quot;&quot;); }
+function newId(){ return &quot;i&quot; + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function lsGet(k){ try{ return localStorage.getItem(k) || &quot;&quot;; }catch(e){ return &quot;&quot;; } }
+function lsSet(k,v){ try{ if(v) localStorage.setItem(k,v); else localStorage.removeItem(k); }catch(e){} }
+function getTok(){ return lsGet(&quot;inv_gh_token&quot;); }
+function stamp(){ const t=new Date(), p=n=&gt;String(n).padStart(2,&quot;0&quot;);
+  return t.getFullYear()+&quot;-&quot;+p(t.getMonth()+1)+&quot;-&quot;+p(t.getDate())+&quot; &quot;+p(t.getHours())+&quot;:&quot;+p(t.getMinutes()); }
+function uv(i,k){ return Number(i.use &amp;&amp; i.use[k]) || 0; }
+function mv(i,k){ return (i.memo &amp;&amp; i.memo[k]) || &quot;&quot;; }
+let _tt=null;
+function toast(msg, err){ const t=$(&quot;toast&quot;); t.textContent=msg; t.className=err?&quot;err&quot;:&quot;&quot;; t.style.display=&quot;block&quot;;
+  clearTimeout(_tt); _tt=setTimeout(()=&gt;{ t.style.display=&quot;none&quot;; }, err?7000:4500); }
+
+function norm(d){
+  const items = (d &amp;&amp; Array.isArray(d.items)) ? d.items : [];
+  items.forEach(i=&gt;{
+    if(!i.id) i.id = newId();
+    i.use = i.use || {}; i.memo = i.memo || {};
+    [&quot;supplier&quot;,&quot;product&quot;,&quot;spec&quot;,&quot;maker&quot;].forEach(k=&gt;{ i[k] = i[k]==null ? &quot;&quot; : String(i[k]); });
+    i.qty = Number(i.qty) || 0;
+  });
+  return {updated: (d &amp;&amp; d.updated) || &quot;&quot;, items: items};
+}
+function setData(d){ DATA = norm(d); ITEMS = DATA.items; refreshAll(); }
+function refreshAll(){ buildVendors(); buildSupplierLists(); updateStats(); go(); }
+
+function setSrc(live){
+  $(&quot;src-badge&quot;).innerHTML = live
+    ? '&lt;span class=&quot;src live&quot;&gt;🟢 최신 데이터&lt;/span&gt;'
+    : '&lt;span class=&quot;src snap&quot;&gt;⚪ 저장된 사본 (인터넷 연결되면 자동으로 최신화)&lt;/span&gt;';
+}
+
+function updateStats(){
+  const sup = new Set(ITEMS.map(i=&gt;i.supplier).filter(Boolean));
+  const qty = ITEMS.reduce((a,i)=&gt;a+(i.qty||0), 0);
+  $(&quot;n-items&quot;).textContent = ITEMS.length;
+  $(&quot;n-sup&quot;).textContent = sup.size;
+  $(&quot;n-qty&quot;).textContent = qty.toLocaleString();
+  $(&quot;upd&quot;).textContent = &quot;마지막 수정: &quot; + (DATA.updated || &quot;-&quot;) + &quot; · &quot; + ITEMS.length + &quot;건 / &quot; + qty.toLocaleString() + &quot;개&quot;;
+}
 
 // ===== 고정 10개 구매업체 카드 =====
-(function() {
-  // 표시할 업체 고정 목록 (순서 그대로 표시)
-  const FIXED_VENDORS = [&quot;대아상사&quot;,&quot;현전사&quot;,&quot;동화자동화&quot;,&quot;훼스토&quot;,&quot;삼원자동화&quot;,&quot;디에스시스템&quot;,&quot;인아오리엔탈&quot;,&quot;키엔스&quot;,&quot;미스미&quot;,&quot;에스엠이앤씨&quot;];
-
+function buildVendors(){
   const stats = {};
-  ALL_ITEMS.forEach(d=&gt;{
+  ITEMS.forEach(d=&gt;{
     if(!d.supplier) return;
     if(!stats[d.supplier]) stats[d.supplier] = {inStock:0, depleted:0, qty:0};
-    if((d.qty||0) &gt; 0) stats[d.supplier].inStock += 1;
-    else stats[d.supplier].depleted += 1;
+    if((d.qty||0) &gt; 0) stats[d.supplier].inStock += 1; else stats[d.supplier].depleted += 1;
     stats[d.supplier].qty += (d.qty||0);
   });
-
-  const grid = document.getElementById(&quot;vendor-grid&quot;);
+  const grid = $(&quot;vendor-grid&quot;); grid.innerHTML = &quot;&quot;;
+  const selected = $(&quot;fSupplier&quot;).value;
   FIXED_VENDORS.forEach(name=&gt;{
     const s = stats[name] || {inStock:0, depleted:0, qty:0};
     const card = document.createElement(&quot;div&quot;);
-    card.className = &quot;vendor-card&quot;;
+    card.className = &quot;vendor-card&quot; + (selected===name ? &quot; active&quot; : &quot;&quot;);
     card.setAttribute(&quot;data-supplier&quot;, name);
     card.innerHTML = `
-      &lt;div class=&quot;vendor-name&quot; title=&quot;${name}&quot;&gt;${name}&lt;/div&gt;
+      &lt;div class=&quot;vendor-name&quot; title=&quot;${esc(name)}&quot;&gt;${esc(name)}&lt;/div&gt;
       &lt;div class=&quot;vendor-stat&quot;&gt;&lt;span class=&quot;dot&quot; style=&quot;background:#2e9e44&quot;&gt;&lt;/span&gt;보유품목: &lt;b&gt;${s.inStock}건&lt;/b&gt;&lt;/div&gt;
       &lt;div class=&quot;vendor-stat&quot;&gt;&lt;span class=&quot;dot&quot; style=&quot;background:#C0392B&quot;&gt;&lt;/span&gt;소진품목: &lt;b style=&quot;color:#C0392B&quot;&gt;${s.depleted}건&lt;/b&gt;&lt;/div&gt;
-      &lt;div class=&quot;vendor-stat&quot;&gt;&lt;span class=&quot;dot&quot; style=&quot;background:#185FA5&quot;&gt;&lt;/span&gt;재고수량: &lt;b&gt;${s.qty.toLocaleString()}개&lt;/b&gt;&lt;/div&gt;
-    `;
-    card.onclick = ()=&gt;{
-      const isActive = card.classList.contains(&quot;active&quot;);
-      if(isActive) {
-        filterSupplier(&quot;&quot;);
-      } else {
-        filterSupplier(name);
-      }
-    };
+      &lt;div class=&quot;vendor-stat&quot;&gt;&lt;span class=&quot;dot&quot; style=&quot;background:#185FA5&quot;&gt;&lt;/span&gt;재고수량: &lt;b&gt;${s.qty.toLocaleString()}개&lt;/b&gt;&lt;/div&gt;`;
+    card.onclick = ()=&gt;{ filterSupplier(card.classList.contains(&quot;active&quot;) ? &quot;&quot; : name); };
     grid.appendChild(card);
   });
-})();
+}
 
-// ===== 드롭다운 + 칩 =====
-(function() {
-  const suppliers = [...new Set(ALL_ITEMS.map(d=&gt;d.supplier).filter(v=&gt;v))].sort();
-  const sel = document.getElementById(&quot;fSupplier&quot;);
-  const panel = document.getElementById(&quot;supplier-panel&quot;);
+// ===== 드롭다운 + 칩 + 업체 자동완성 =====
+function buildSupplierLists(){
+  const suppliers = [...new Set(ITEMS.map(d=&gt;d.supplier).filter(v=&gt;v))].sort();
+  const sel = $(&quot;fSupplier&quot;), keep = sel.value;
+  sel.innerHTML = '&lt;option value=&quot;&quot;&gt;전체 구매업체&lt;/option&gt;' + suppliers.map(v=&gt;`&lt;option value=&quot;${esc(v)}&quot;&gt;${esc(v)}&lt;/option&gt;`).join(&quot;&quot;);
+  sel.value = suppliers.includes(keep) ? keep : &quot;&quot;;
+  const panel = $(&quot;supplier-panel&quot;);
+  panel.innerHTML = &quot;&quot;;
+  const mk = (label, v)=&gt;{ const c=document.createElement(&quot;button&quot;); c.className=&quot;chip&quot;+(sel.value===v?&quot; active&quot;:&quot;&quot;);
+    c.textContent=label; c.setAttribute(&quot;data-supplier&quot;, v); c.onclick=()=&gt;filterSupplier(v); panel.appendChild(c); };
+  mk(&quot;전체&quot;, &quot;&quot;);
+  suppliers.forEach(v=&gt;mk(`${v} (${ITEMS.filter(d=&gt;d.supplier===v).length})`, v));
+  $(&quot;dl-sup&quot;).innerHTML = suppliers.map(v=&gt;`&lt;option value=&quot;${esc(v)}&quot;&gt;`).join(&quot;&quot;);
+}
 
-  const allChip = document.createElement(&quot;button&quot;);
-  allChip.className = &quot;chip&quot;;
-  allChip.textContent = &quot;전체&quot;;
-  allChip.setAttribute(&quot;data-supplier&quot;, &quot;&quot;);
-  allChip.onclick = () =&gt; filterSupplier(&quot;&quot;);
-  panel.appendChild(allChip);
-
-  suppliers.forEach(v=&gt;{
-    const opt = document.createElement(&quot;option&quot;);
-    opt.value = v; opt.textContent = v;
-    sel.appendChild(opt);
-
-    const count = ALL_ITEMS.filter(d=&gt;d.supplier===v).length;
-    const chip = document.createElement(&quot;button&quot;);
-    chip.className = &quot;chip&quot;;
-    chip.textContent = `${v} (${count})`;
-    chip.setAttribute(&quot;data-supplier&quot;, v);
-    chip.onclick = () =&gt; filterSupplier(v);
-    panel.appendChild(chip);
-  });
-})();
-
-function filterByAll() {
+function filterByAll(){
   document.querySelectorAll(&quot;.stat-card&quot;).forEach(el=&gt;el.classList.remove(&quot;active&quot;));
-  document.getElementById(&quot;stat-all&quot;).classList.add(&quot;active&quot;);
-  document.getElementById(&quot;fSearch&quot;).value = &quot;&quot;;
+  $(&quot;stat-all&quot;).classList.add(&quot;active&quot;);
+  $(&quot;fSearch&quot;).value = &quot;&quot;;
   sortKey = &quot;supplier&quot;; sortAsc = true;
   filterSupplier(&quot;&quot;);
 }
-
-function showSupplierFilter() {
+function showSupplierFilter(){
   document.querySelectorAll(&quot;.stat-card&quot;).forEach(el=&gt;el.classList.remove(&quot;active&quot;));
-  document.getElementById(&quot;stat-suppliers&quot;).classList.add(&quot;active&quot;);
-  const panel = document.getElementById(&quot;supplier-panel&quot;);
+  $(&quot;stat-suppliers&quot;).classList.add(&quot;active&quot;);
+  const panel = $(&quot;supplier-panel&quot;);
   panel.style.display = panel.style.display === &quot;none&quot; ? &quot;flex&quot; : &quot;none&quot;;
 }
-
-function filterSupplier(name) {
-  document.getElementById(&quot;fSupplier&quot;).value = name;
-  document.querySelectorAll(&quot;.chip&quot;).forEach(el=&gt;el.classList.remove(&quot;active&quot;));
-  const chip = document.querySelector(`.chip[data-supplier=&quot;${name}&quot;]`);
-  if(chip) chip.classList.add(&quot;active&quot;);
-  document.querySelectorAll(&quot;.vendor-card&quot;).forEach(el=&gt;el.classList.remove(&quot;active&quot;));
-  if(name) {
-    const vcard = document.querySelector(`.vendor-card[data-supplier=&quot;${name}&quot;]`);
-    if(vcard) vcard.classList.add(&quot;active&quot;);
-  }
+function filterSupplier(name){
+  $(&quot;fSupplier&quot;).value = name;
+  document.querySelectorAll(&quot;.chip&quot;).forEach(el=&gt;el.classList.toggle(&quot;active&quot;, el.getAttribute(&quot;data-supplier&quot;)===name));
+  document.querySelectorAll(&quot;.vendor-card&quot;).forEach(el=&gt;el.classList.toggle(&quot;active&quot;, !!name &amp;&amp; el.getAttribute(&quot;data-supplier&quot;)===name));
   go();
 }
-
-function filterByQty() {
+function filterByQty(){
   document.querySelectorAll(&quot;.stat-card&quot;).forEach(el=&gt;el.classList.remove(&quot;active&quot;));
-  document.getElementById(&quot;stat-qty&quot;).classList.add(&quot;active&quot;);
-  document.getElementById(&quot;fSupplier&quot;).value = &quot;&quot;;
-  document.getElementById(&quot;fSearch&quot;).value = &quot;&quot;;
+  $(&quot;stat-qty&quot;).classList.add(&quot;active&quot;);
+  $(&quot;fSupplier&quot;).value = &quot;&quot;; $(&quot;fSearch&quot;).value = &quot;&quot;;
   sortKey = &quot;qty&quot;; sortAsc = false;
   go();
 }
 
-function go() {
-  const s = document.getElementById(&quot;fSupplier&quot;).value;
-  const q = document.getElementById(&quot;fSearch&quot;).value.toLowerCase();
-  cur = ALL_ITEMS.filter(d=&gt;{
-    return (!s || d.supplier===s) &amp;&amp; (!q || d.spec.toLowerCase().includes(q) || d.product.toLowerCase().includes(q));
-  });
+function go(){
+  const s = $(&quot;fSupplier&quot;).value;
+  const q = $(&quot;fSearch&quot;).value.toLowerCase();
+  cur = ITEMS.filter(d=&gt; (!s || d.supplier===s) &amp;&amp;
+    (!q || d.spec.toLowerCase().includes(q) || d.product.toLowerCase().includes(q) || d.maker.toLowerCase().includes(q)));
   pgn = 1; doSort();
 }
-
-function sortBy(key) {
-  if(sortKey===key) sortAsc=!sortAsc; else {sortKey=key;sortAsc=true;}
-  doSort();
-}
-
-function doSort() {
+function sortBy(key){ if(sortKey===key) sortAsc=!sortAsc; else {sortKey=key; sortAsc=true;} doSort(); }
+function sval(i){ return sortKey===&quot;use_cur&quot; ? uv(i,CUR_KEY) : sortKey===&quot;use_nxt&quot; ? uv(i,NXT_KEY) : i[sortKey]; }
+function doSort(){
   cur.sort((a,b)=&gt;{
-    const av=a[sortKey], bv=b[sortKey];
+    const av=sval(a), bv=sval(b);
     if(typeof av===&quot;number&quot; &amp;&amp; typeof bv===&quot;number&quot;) return sortAsc?av-bv:bv-av;
-    const as=av||&quot;&quot;, bs=bv||&quot;&quot;;
-    return sortAsc?(as&gt;bs?1:-1):(as&lt;bs?1:-1);
+    const r = String(av||&quot;&quot;).localeCompare(String(bv||&quot;&quot;), &quot;ko&quot;);
+    return sortAsc ? r : -r;
   });
   render();
 }
 
-function esc(s) {
-  return String(s||&quot;&quot;).replace(/&amp;/g,&quot;&amp;amp;&quot;).replace(/&lt;/g,&quot;&amp;lt;&quot;).replace(/&gt;/g,&quot;&amp;gt;&quot;).replace(/&quot;/g,&quot;&amp;quot;&quot;);
-}
-
-function usageCell(qty, memo) {
+function usageCell(qty, memo){
   const num = qty &gt; 0 ? `&lt;span class=&quot;use-num&quot;&gt;${qty.toLocaleString()}&lt;/span&gt;` : `&lt;span style=&quot;color:#ccc&quot;&gt;-&lt;/span&gt;`;
   const icon = memo ? `&lt;span class=&quot;memo&quot; title=&quot;${esc(memo)}&quot;&gt;📝&lt;/span&gt;` : &quot;&quot;;
   return num + icon;
 }
 
-function render() {
-  const st=(pgn-1)*PS;
-  const rows = printing ? cur : cur.slice(st,st+PS);
-  document.getElementById(&quot;tbody&quot;).innerHTML=rows.map(d=&gt;`
-    &lt;tr&gt;
-      &lt;td data-l=&quot;구매처&quot; style=&quot;font-weight:500&quot;&gt;${d.supplier||&quot;-&quot;}&lt;/td&gt;
-      &lt;td data-l=&quot;제작사&quot;&gt;${d.maker||&quot;-&quot;}&lt;/td&gt;
-      &lt;td data-l=&quot;품명&quot; style=&quot;font-weight:500&quot;&gt;${d.product||&quot;-&quot;}&lt;/td&gt;
-      &lt;td data-l=&quot;규격&quot; style=&quot;color:#888&quot;&gt;${d.spec||&quot;-&quot;}&lt;/td&gt;
-      &lt;td data-l=&quot;재고&quot; style=&quot;text-align:right;font-weight:500&quot; class=&quot;c-num ${d.qty&lt;=0?'qty-zero':''}&quot;&gt;${d.qty.toLocaleString()}&lt;/td&gt;
-      &lt;td data-l=&quot;당월&quot; class=&quot;c-num&quot; style=&quot;text-align:right&quot;&gt;${usageCell(d.use_cur, d.memo_cur)}&lt;/td&gt;
-      &lt;td data-l=&quot;익월&quot; class=&quot;c-num&quot; style=&quot;text-align:right&quot;&gt;${usageCell(d.use_nxt, d.memo_nxt)}&lt;/td&gt;
+function viewRow(d){
+  return `&lt;tr&gt;
+      &lt;td data-l=&quot;구매처&quot; style=&quot;font-weight:500&quot;&gt;${esc(d.supplier)||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;제작사&quot;&gt;${esc(d.maker)||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;품명&quot; style=&quot;font-weight:500&quot;&gt;${esc(d.product)||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;규격&quot; style=&quot;color:#888&quot;&gt;${esc(d.spec)||&quot;-&quot;}&lt;/td&gt;
+      &lt;td data-l=&quot;재고&quot; style=&quot;text-align:right;font-weight:500&quot; class=&quot;${d.qty&lt;=0?'qty-zero':''}&quot;&gt;${d.qty.toLocaleString()}&lt;/td&gt;
+      &lt;td data-l=&quot;당월&quot; style=&quot;text-align:right&quot;&gt;${usageCell(uv(d,CUR_KEY), mv(d,CUR_KEY))}&lt;/td&gt;
+      &lt;td data-l=&quot;익월&quot; style=&quot;text-align:right&quot;&gt;${usageCell(uv(d,NXT_KEY), mv(d,NXT_KEY))}&lt;/td&gt;
+      &lt;td class=&quot;pc&quot;&gt;&lt;/td&gt;&lt;td class=&quot;pc&quot;&gt;&lt;/td&gt;&lt;td class=&quot;ec&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;`;
+}
+function editRow(d){
+  const A = `data-id=&quot;${d.id}&quot;`;
+  const t = (f,v,ph)=&gt;`&lt;input class=&quot;ei&quot; ${A} data-f=&quot;${f}&quot; value=&quot;${esc(v)}&quot; placeholder=&quot;${ph}&quot;&gt;`;
+  const n = (f,v)=&gt;`&lt;input class=&quot;ei num&quot; type=&quot;number&quot; ${A} data-f=&quot;${f}&quot; value=&quot;${v||&quot;&quot;}&quot; placeholder=&quot;0&quot;&gt;`;
+  const m = (f,v)=&gt;`&lt;textarea class=&quot;ei&quot; rows=&quot;1&quot; ${A} data-f=&quot;${f}&quot; placeholder=&quot;메모&quot;&gt;${esc(v)}&lt;/textarea&gt;`;
+  return `&lt;tr data-id=&quot;${d.id}&quot;&gt;
+      &lt;td data-l=&quot;구매처&quot;&gt;&lt;input class=&quot;ei&quot; list=&quot;dl-sup&quot; ${A} data-f=&quot;supplier&quot; value=&quot;${esc(d.supplier)}&quot; placeholder=&quot;구매업체&quot;&gt;&lt;/td&gt;
+      &lt;td data-l=&quot;제작사&quot;&gt;${t(&quot;maker&quot;, d.maker, &quot;메이커&quot;)}&lt;/td&gt;
+      &lt;td data-l=&quot;품명&quot;&gt;${t(&quot;product&quot;, d.product, &quot;품명&quot;)}&lt;/td&gt;
+      &lt;td data-l=&quot;규격&quot;&gt;${t(&quot;spec&quot;, d.spec, &quot;규격&quot;)}&lt;/td&gt;
+      &lt;td data-l=&quot;재고&quot;&gt;${n(&quot;qty&quot;, d.qty)}&lt;/td&gt;
+      &lt;td data-l=&quot;당월&quot;&gt;${n(&quot;use_cur&quot;, uv(d,CUR_KEY))}${m(&quot;memo_cur&quot;, mv(d,CUR_KEY))}&lt;/td&gt;
+      &lt;td data-l=&quot;익월&quot;&gt;${n(&quot;use_nxt&quot;, uv(d,NXT_KEY))}${m(&quot;memo_nxt&quot;, mv(d,NXT_KEY))}&lt;/td&gt;
       &lt;td class=&quot;pc&quot;&gt;&lt;/td&gt;&lt;td class=&quot;pc&quot;&gt;&lt;/td&gt;
-    &lt;/tr&gt;`).join(&quot;&quot;);
-  const tp=Math.ceil(cur.length/PS)||1;
-  document.getElementById(&quot;pinfo&quot;).textContent=`${pgn} / ${tp} 페이지`;
-  document.getElementById(&quot;cnt&quot;).textContent=`총 ${cur.length}건 표시 중`;
+      &lt;td class=&quot;ec&quot;&gt;&lt;button class=&quot;del&quot; onclick=&quot;delRow('${d.id}')&quot; title=&quot;이 행 삭제&quot;&gt;🗑️&lt;/button&gt;&lt;/td&gt;
+    &lt;/tr&gt;`;
 }
 
-function chpg(dir) {const tp=Math.ceil(cur.length/PS)||1;pgn=Math.max(1,Math.min(tp,pgn+dir));render();}
+function render(){
+  const st = (pgn-1)*PS;
+  const rows = printing ? cur : cur.slice(st, st+PS);
+  const ed = editMode &amp;&amp; !printing;
+  $(&quot;tbody&quot;).innerHTML = rows.length
+    ? rows.map(d=&gt; ed ? editRow(d) : viewRow(d)).join(&quot;&quot;)
+    : `&lt;tr&gt;&lt;td colspan=&quot;7&quot; style=&quot;text-align:center;color:#999;padding:30px&quot;&gt;표시할 품목이 없습니다&lt;/td&gt;&lt;/tr&gt;`;
+  const tp = Math.ceil(cur.length/PS) || 1;
+  $(&quot;pinfo&quot;).textContent = `${pgn} / ${tp} 페이지`;
+  $(&quot;cnt&quot;).textContent = `총 ${cur.length}건 표시 중`;
+}
+function chpg(dir){ const tp=Math.ceil(cur.length/PS)||1; pgn=Math.max(1,Math.min(tp,pgn+dir)); render(); }
 
-function buildPrintHead() {
-  const s = document.getElementById(&quot;fSupplier&quot;).value;
-  const q = document.getElementById(&quot;fSearch&quot;).value;
-  const t = new Date();
-  const ds = t.getFullYear()+&quot;-&quot;+String(t.getMonth()+1).padStart(2,&quot;0&quot;)+&quot;-&quot;+String(t.getDate()).padStart(2,&quot;0&quot;);
-  const scope = (s || &quot;전체 구매업체&quot;) + (q ? &quot; · 검색: &quot;+esc(q) : &quot;&quot;);
-  document.getElementById(&quot;print-head&quot;).innerHTML =
+// ===== 수정모드: 입력하면 바로 데이터에 반영 =====
+$(&quot;tbody&quot;).addEventListener(&quot;input&quot;, e=&gt;{
+  const t = e.target; if(!t.dataset || !t.dataset.f) return;
+  const it = ITEMS.find(x=&gt;x.id===t.dataset.id); if(!it) return;
+  const f = t.dataset.f, v = t.value;
+  if(f===&quot;qty&quot;) it.qty = Number(v) || 0;
+  else if(f===&quot;use_cur&quot; || f===&quot;use_nxt&quot;){ const k = f===&quot;use_cur&quot;?CUR_KEY:NXT_KEY, n = Number(v)||0; if(n) it.use[k]=n; else delete it.use[k]; }
+  else if(f===&quot;memo_cur&quot; || f===&quot;memo_nxt&quot;){ const k = f===&quot;memo_cur&quot;?CUR_KEY:NXT_KEY; if(v.trim()) it.memo[k]=v; else delete it.memo[k]; }
+  else it[f] = v;
+  markDirty();
+});
+function markDirty(){ dirty = true; $(&quot;edit-msg&quot;).textContent = &quot;● 저장 안 된 변경 있음&quot;; updateStats(); buildVendors(); }
+
+function addRow(){
+  const s = $(&quot;fSupplier&quot;).value;
+  const it = {id:newId(), supplier:s, product:&quot;&quot;, spec:&quot;&quot;, maker:&quot;&quot;, qty:0, use:{}, memo:{}};
+  ITEMS.unshift(it); cur.unshift(it); pgn = 1; render(); markDirty();
+  const el = document.querySelector(`#tbody input[data-id=&quot;${it.id}&quot;][data-f=&quot;${s?'maker':'supplier'}&quot;]`);
+  if(el) el.focus();
+}
+function delRow(id){
+  const it = ITEMS.find(x=&gt;x.id===id); if(!it) return;
+  ITEMS.splice(ITEMS.indexOf(it), 1);
+  cur = cur.filter(x=&gt;x!==it);
+  render(); markDirty();
+  toast(&quot;삭제됨: &quot; + (it.product || &quot;(빈 행)&quot;) + &quot; — 잘못 지웠으면 [취소]를 누르세요&quot;);
+}
+
+function toggleEdit(){ if(editMode) cancelEdit(); else enterEdit(); }
+async function enterEdit(){
+  if(!getTok()){ showTok(); return; }
+  $(&quot;btnEdit&quot;).textContent = &quot;⏳ 불러오는 중...&quot;;
+  try{ await loadFromApi(); }
+  catch(e){ $(&quot;btnEdit&quot;).textContent = &quot;✏️ 수정모드&quot;; toast(&quot;❌ 최신 데이터를 못 불러왔어요: &quot; + e.message, true); return; }
+  backupJSON = JSON.stringify(DATA);
+  editMode = true; dirty = false;
+  document.body.classList.add(&quot;editing&quot;);
+  $(&quot;edit-bar&quot;).style.display = &quot;flex&quot;;
+  $(&quot;edit-msg&quot;).textContent = &quot;&quot;;
+  $(&quot;btnEdit&quot;).textContent = &quot;✏️ 수정 중 (나가기)&quot;;
+  render();
+}
+function exitEdit(){
+  editMode = false; dirty = false; backupJSON = null;
+  document.body.classList.remove(&quot;editing&quot;);
+  $(&quot;edit-bar&quot;).style.display = &quot;none&quot;;
+  $(&quot;btnEdit&quot;).textContent = &quot;✏️ 수정모드&quot;;
+  refreshAll();
+}
+function cancelEdit(){
+  if(dirty &amp;&amp; !confirm(&quot;저장하지 않은 변경을 모두 버릴까요?&quot;)) return;
+  if(backupJSON){ DATA = norm(JSON.parse(backupJSON)); ITEMS = DATA.items; }
+  exitEdit();
+}
+
+// ===== GitHub 연결 =====
+function hdr(){ return {&quot;Authorization&quot;: &quot;Bearer &quot; + getTok(), &quot;Accept&quot;: &quot;application/vnd.github+json&quot;}; }
+function b64dec(s){ const bin = atob(String(s).replace(/\s/g,&quot;&quot;)); const u = new Uint8Array(bin.length);
+  for(let i=0;i&lt;bin.length;i++) u[i] = bin.charCodeAt(i); return new TextDecoder().decode(u); }
+function b64enc(str){ const u = new TextEncoder().encode(str); let bin = &quot;&quot;;
+  for(let i=0;i&lt;u.length;i+=0x8000) bin += String.fromCharCode.apply(null, u.subarray(i, i+0x8000)); return btoa(bin); }
+async function apiGet(){
+  const r = await fetch(CFG.api, {headers: hdr(), cache: &quot;no-store&quot;});
+  if(r.status === 404) return null;
+  if(r.status === 401) throw new Error(&quot;토큰이 틀렸거나 만료됐어요&quot;);
+  if(r.status === 403) throw new Error(&quot;토큰에 이 저장소 권한이 없어요&quot;);
+  if(!r.ok) throw new Error(&quot;GitHub 응답 &quot; + r.status);
+  return await r.json();
+}
+async function loadFromApi(){
+  const j = await apiGet();
+  if(j &amp;&amp; j.content){ setData(JSON.parse(b64dec(j.content))); setSrc(true); }
+}
+
+async function saveEdit(){
+  if(!getTok()){ showTok(); return; }
+  const b = $(&quot;btnSave&quot;); b.disabled = true; b.textContent = &quot;저장 중...&quot;;
+  try{
+    const kept = ITEMS.filter(i=&gt; (i.supplier+i.product+i.spec+i.maker).trim());  // 완전히 빈 행은 버림
+    ITEMS.length = 0; kept.forEach(i=&gt;ITEMS.push(i));
+    DATA.items = ITEMS;
+    DATA.updated = stamp();
+    const j = await apiGet();
+    const body = {message: &quot;재고 수정 (웹) &quot; + DATA.updated, content: b64enc(JSON.stringify(DATA, null, 1))};
+    if(j &amp;&amp; j.sha) body.sha = j.sha;
+    const r = await fetch(CFG.api, {method: &quot;PUT&quot;, headers: Object.assign({&quot;Content-Type&quot;: &quot;application/json&quot;}, hdr()), body: JSON.stringify(body)});
+    if(r.status === 401) throw new Error(&quot;토큰이 틀렸거나 만료됐어요&quot;);
+    if(r.status === 403 || r.status === 404) throw new Error(&quot;토큰에 쓰기 권한이 없어요 (Contents: Read and write 필요)&quot;);
+    if(!r.ok) throw new Error(&quot;GitHub 응답 &quot; + r.status);
+    exitEdit(); setSrc(true);
+    toast(&quot;✅ 저장 완료! 팀원들은 1~2분 뒤 새로고침하면 바뀐 내용이 보여요&quot;);
+  }catch(e){
+    toast(&quot;❌ 저장 실패: &quot; + e.message + &quot; (고친 내용은 화면에 그대로 있어요)&quot;, true);
+  }finally{
+    b.disabled = false; b.textContent = &quot;💾 수정완료&quot;;
+  }
+}
+
+function showTok(){ $(&quot;tok-box&quot;).style.display = &quot;block&quot;; $(&quot;tokIn&quot;).focus(); }
+function hideTok(){ $(&quot;tok-box&quot;).style.display = &quot;none&quot;; $(&quot;tokIn&quot;).value = &quot;&quot;; }
+async function saveTok(){
+  const v = $(&quot;tokIn&quot;).value.trim(); if(!v) return;
+  lsSet(&quot;inv_gh_token&quot;, v);
+  try{
+    await apiGet();
+    hideTok(); $(&quot;btnEdit&quot;).style.display = &quot;&quot;;
+    toast(&quot;🔑 토큰 확인 완료! 이제 이 PC에서 수정할 수 있어요&quot;);
+    enterEdit();
+  }catch(e){
+    lsSet(&quot;inv_gh_token&quot;, &quot;&quot;);
+    toast(&quot;❌ &quot; + e.message, true);
+  }
+}
+function forgetTok(){
+  if(!confirm(&quot;이 PC에 저장된 토큰을 지울까요? (저장 안 된 변경도 사라집니다)&quot;)) return;
+  lsSet(&quot;inv_gh_token&quot;, &quot;&quot;); dirty = false; cancelEdit(); $(&quot;btnEdit&quot;).style.display = &quot;none&quot;;
+  toast(&quot;토큰을 지웠어요. 다시 수정하려면 링크 끝에 #admin 을 붙여서 여세요&quot;);
+}
+
+// 수정 버튼은 토큰이 저장된 PC 또는 링크 끝에 #admin 을 붙여 열었을 때만 보입니다
+function checkAdmin(){
+  let admin = false;
+  try{ admin = /admin/i.test(window.top.location.hash) || /admin/i.test(location.hash); }catch(e){}
+  if(getTok() || admin) $(&quot;btnEdit&quot;).style.display = &quot;&quot;;
+}
+checkAdmin();
+window.addEventListener(&quot;hashchange&quot;, checkAdmin);
+try{ if(window.top !== window) window.top.addEventListener(&quot;hashchange&quot;, checkAdmin); }catch(e){}
+
+window.addEventListener(&quot;beforeunload&quot;, e=&gt;{ if(editMode &amp;&amp; dirty){ e.preventDefault(); e.returnValue = &quot;&quot;; } });
+
+// ===== 인쇄 =====
+function buildPrintHead(){
+  const s = $(&quot;fSupplier&quot;).value, q = $(&quot;fSearch&quot;).value;
+  const scope = (s || &quot;전체 구매업체&quot;) + (q ? &quot; · 검색: &quot; + esc(q) : &quot;&quot;);
+  $(&quot;print-head&quot;).innerHTML =
     `&lt;div style=&quot;display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:4px;margin-bottom:8px&quot;&gt;`
     + `&lt;span style=&quot;font-size:16px;font-weight:700&quot;&gt;📦 재고 현황&lt;/span&gt;`
-    + `&lt;span style=&quot;font-size:11px&quot;&gt;출력일 ${ds} · ${scope} · ${cur.length}건&lt;/span&gt;&lt;/div&gt;`;
+    + `&lt;span style=&quot;font-size:11px&quot;&gt;출력일 ${stamp().slice(0,10)} · ${esc(scope)} · ${cur.length}건&lt;/span&gt;&lt;/div&gt;`;
 }
 window.addEventListener(&quot;beforeprint&quot;, ()=&gt;{ printing = true; buildPrintHead(); render(); });
 window.addEventListener(&quot;afterprint&quot;,  ()=&gt;{ printing = false; render(); });
 
-// Init
-go();
+// ===== 시작: 사본 먼저 보여주고, 최신 데이터를 받아오면 교체 =====
+setData(DATA); setSrc(false);
+(async function(){
+  let d = null;
+  if(getTok()){
+    try{ const j = await apiGet(); if(j &amp;&amp; j.content) d = JSON.parse(b64dec(j.content)); }catch(e){}
+  }
+  if(!d){
+    try{ const r = await fetch(CFG.pages + &quot;?t=&quot; + Date.now(), {cache: &quot;no-store&quot;}); if(r.ok) d = await r.json(); }catch(e){}
+  }
+  if(d &amp;&amp; Array.isArray(d.items)){
+    if(!editMode &amp;&amp; (d.updated || &quot;&quot;) &gt;= (DATA.updated || &quot;&quot;)) setData(d);
+    setSrc(true);
+  }
+})();
 &lt;/script&gt;
-&lt;/body&gt;&lt;/html&gt;"></iframe>
+&lt;/body&gt;&lt;/html&gt;
+"></iframe>
   <iframe id="pane2" title="완료 프로젝트" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;ko&quot;&gt;
 &lt;head&gt;
@@ -896,7 +1129,7 @@ tr:hover td{background:#f0f7f2 !important}
 &lt;body&gt;
 &lt;div class=&quot;container&quot;&gt;
 &lt;h1&gt;✅ 완료 프로젝트&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 15:18 · 발주 완료된 종료 프로젝트 아카이브&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 17:35 · 발주 완료된 종료 프로젝트 아카이브&lt;/div&gt;
 
 &lt;div class=&quot;summary-grid&quot;&gt;
   &lt;div class=&quot;stat-card&quot;&gt;&lt;div class=&quot;stat-label&quot;&gt;완료 프로젝트&lt;/div&gt;&lt;div class=&quot;stat-num&quot;&gt;5&lt;/div&gt;&lt;/div&gt;
