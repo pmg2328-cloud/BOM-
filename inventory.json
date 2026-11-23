@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-23 18:07",
+ "updated": "2026-11-23 18:09",
  "items": [
   {
    "id": "imwt1lj2v4iof4",
@@ -551,7 +551,7 @@
    "id": "i0051",
    "supplier": "현전사",
    "product": "LIGHT CURTAIN BKT",
-   "spec": "F39-LSGA",
+   "spec": "F39-LSGA (선조치 재고)",
    "maker": "OMRON",
    "qty": 68,
    "use": {},
@@ -1083,7 +1083,7 @@
    "product": "도어락",
    "spec": "D4SL-N2NFA-D",
    "maker": "OMRON",
-   "qty": 65,
+   "qty": 59,
    "use": {},
    "memo": {}
   },
@@ -1093,7 +1093,7 @@
    "product": "도어락",
    "spec": "D4SL-N2NFG-D",
    "maker": "OMRON",
-   "qty": 5,
+   "qty": 6,
    "use": {},
    "memo": {}
   },
@@ -1103,7 +1103,7 @@
    "product": "도어락 KEY",
    "spec": "D4SL-NK3",
    "maker": "OMRON",
-   "qty": 80,
+   "qty": 112,
    "use": {},
    "memo": {}
   },
@@ -1181,9 +1181,9 @@
    "id": "i0114",
    "supplier": "현전사",
    "product": "라이트 커튼",
-   "spec": "F39-LSGA",
+   "spec": "F39-LSGA (일반 재고)",
    "maker": "OMRON",
-   "qty": 17,
+   "qty": 18,
    "use": {},
    "memo": {}
   },
