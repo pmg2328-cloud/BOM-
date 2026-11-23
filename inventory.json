@@ -1,6 +1,26 @@
 {
- "updated": "2026-09-22 08:29",
+ "updated": "2026-11-23 18:05",
  "items": [
+  {
+   "id": "imwt1h5cl9amer",
+   "supplier": "인아오리엔탈",
+   "product": "STEPPING MOTOR ",
+   "spec": "CRK564AKD-T10 (기존 재고)",
+   "maker": "ORIENTAL",
+   "qty": 26,
+   "use": {},
+   "memo": {}
+  },
+  {
+   "id": "imwt1fmno2ug5y",
+   "supplier": "인아오리엔탈",
+   "product": "STEPPING MOTOR DRIVE",
+   "spec": "드라이브 (핀12EA)",
+   "maker": "ORIENTAL",
+   "qty": 26,
+   "use": {},
+   "memo": {}
+  },
   {
    "id": "i0001",
    "supplier": "대아상사",
@@ -359,9 +379,9 @@
    "id": "i0036",
    "supplier": "인아오리엔탈",
    "product": "STEPPING MOTOR",
-   "spec": "CRK564AKD-T10",
+   "spec": "CRK564AKD-T10 (선조치 재고)",
    "maker": "ORIENTAL",
-   "qty": 157,
+   "qty": 27,
    "use": {},
    "memo": {}
   },
