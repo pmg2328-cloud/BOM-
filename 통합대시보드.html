@@ -133,7 +133,7 @@ tr:hover td{background:#faf9f7}
 &lt;/head&gt;
 &lt;body&gt;
 &lt;h1&gt;구매품 발주 현황 대시보드&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 17:35 &amp;nbsp;·&amp;nbsp; 총 86건&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 17:43 &amp;nbsp;·&amp;nbsp; 총 86건&lt;/div&gt;
 &lt;div class=&quot;error-box&quot;&gt;⚠️ &lt;b&gt;320Ah PMC&lt;/b&gt; 파일을 읽지 못했어요. 경로를 확인해 주세요.&lt;/div&gt;
 
 &lt;div class=&quot;summary-grid&quot;&gt;
@@ -654,7 +654,7 @@ textarea.ei{margin-top:3px;resize:vertical;min-height:26px;font-size:11px;line-h
     &lt;button onclick=&quot;addRow()&quot;&gt;＋ 행 추가&lt;/button&gt;
     &lt;span id=&quot;edit-msg&quot;&gt;&lt;/span&gt;
     &lt;span class=&quot;sp&quot;&gt;&lt;/span&gt;
-    &lt;button onclick=&quot;forgetTok()&quot; title=&quot;이 PC에 저장된 토큰을 지웁니다&quot;&gt;🔑 토큰 해제&lt;/button&gt;
+    &lt;button id=&quot;btnForget&quot; onclick=&quot;forgetTok()&quot; title=&quot;이 PC에 저장된 토큰을 지웁니다&quot;&gt;🔑 토큰 해제&lt;/button&gt;
     &lt;button onclick=&quot;cancelEdit()&quot;&gt;취소&lt;/button&gt;
     &lt;button class=&quot;btn-save&quot; id=&quot;btnSave&quot; onclick=&quot;saveEdit()&quot;&gt;💾 수정완료&lt;/button&gt;
   &lt;/div&gt;
@@ -713,7 +713,8 @@ function esc(s){ return String(s==null?&quot;&quot;:s).replace(/&amp;/g,&quot;&a
 function newId(){ return &quot;i&quot; + Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 function lsGet(k){ try{ return localStorage.getItem(k) || &quot;&quot;; }catch(e){ return &quot;&quot;; } }
 function lsSet(k,v){ try{ if(v) localStorage.setItem(k,v); else localStorage.removeItem(k); }catch(e){} }
-function getTok(){ return lsGet(&quot;inv_gh_token&quot;); }
+const PRESET_TOK = &quot;&quot;;
+function getTok(){ return PRESET_TOK || lsGet(&quot;inv_gh_token&quot;); }
 function stamp(){ const t=new Date(), p=n=&gt;String(n).padStart(2,&quot;0&quot;);
   return t.getFullYear()+&quot;-&quot;+p(t.getMonth()+1)+&quot;-&quot;+p(t.getDate())+&quot; &quot;+p(t.getHours())+&quot;:&quot;+p(t.getMinutes()); }
 function uv(i,k){ return Number(i.use &amp;&amp; i.use[k]) || 0; }
@@ -1012,6 +1013,7 @@ function checkAdmin(){
   if(getTok() || admin) $(&quot;btnEdit&quot;).style.display = &quot;&quot;;
 }
 checkAdmin();
+if(PRESET_TOK) $(&quot;btnForget&quot;).style.display = &quot;none&quot;;
 window.addEventListener(&quot;hashchange&quot;, checkAdmin);
 try{ if(window.top !== window) window.top.addEventListener(&quot;hashchange&quot;, checkAdmin); }catch(e){}
 
@@ -1129,7 +1131,7 @@ tr:hover td{background:#f0f7f2 !important}
 &lt;body&gt;
 &lt;div class=&quot;container&quot;&gt;
 &lt;h1&gt;✅ 완료 프로젝트&lt;/h1&gt;
-&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 17:35 · 발주 완료된 종료 프로젝트 아카이브&lt;/div&gt;
+&lt;div class=&quot;updated&quot;&gt;마지막 업데이트: 2026-11-23 17:43 · 발주 완료된 종료 프로젝트 아카이브&lt;/div&gt;
 
 &lt;div class=&quot;summary-grid&quot;&gt;
   &lt;div class=&quot;stat-card&quot;&gt;&lt;div class=&quot;stat-label&quot;&gt;완료 프로젝트&lt;/div&gt;&lt;div class=&quot;stat-num&quot;&gt;5&lt;/div&gt;&lt;/div&gt;
